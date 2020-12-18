@@ -5,6 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRippleModule} from '@angular/material/core';
+import {MatIconModule} from '@angular/material/icon';
 
 
 const material = [
@@ -13,7 +14,8 @@ const material = [
   MatInputModule,
   MatSelectModule,
   MatCheckboxModule,
-  MatRippleModule
+  MatRippleModule,
+  MatIconModule
 ];
   
 @NgModule({
