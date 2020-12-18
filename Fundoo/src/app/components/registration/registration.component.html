@@ -26,6 +26,30 @@
           </mat-form-field>
         </p>
       </div>
+      <div class="form__first-row">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput autocomplete="off" />
+            <mat-hint
+              >Use 8 or more characters with a mix of letters, numbers &
+              symbols</mat-hint
+            >
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput autocomplete="off" />
+          </mat-form-field>
+        </p>
+      </div>
+
+      <div class="container__checkbox">
+        <span><input type="checkbox" name="" id="" /> Show Password</span>
+      </div>
+      <div class="container__buttons">
+        <button mat-flat-button>Sign in instead</button>
+        <button mat-raised-button color="primary">Next</button>
+      </div>
     </form>
   </div>
   <div class="container__right">

@@ -4,7 +4,8 @@
   padding: 3em;
   width: 53%;
   margin: 2% auto;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2 1 rgba(0, 0, 0, 0.15);
   border-radius: 8px;
 }
 
@@ -49,6 +50,33 @@
   width: 93%;
 }
 
+.container__checkbox {
+  display: flex;
+  align-self: baseline;
+}
+
+.container__buttons {
+  margin-top: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container__buttons button:first-child {
+  color: dodgerblue;
+}
+
+.container__buttons button:first-child:hover {
+  background-color: rgba(30, 144, 255, 0.05);
+}
+
+.container__buttons button:last-child {
+  margin-right: 7%;
+}
+/* 
+.mat-hint {
+  font-size: 12px;
+} */
 /* ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
   height: 40px !important;
 }
