@@ -53,6 +53,7 @@
 .container__checkbox {
   display: flex;
   align-self: baseline;
+  padding: 5px;
 }
 
 .container__buttons {
@@ -72,6 +73,17 @@
 
 .container__buttons button:last-child {
   margin-right: 7%;
+}
+
+select {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
 }
 /* 
 .mat-hint {
