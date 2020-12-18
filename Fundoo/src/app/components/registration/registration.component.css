@@ -125,8 +125,7 @@ select {
   }
   .container__buttons {
     justify-content: space-between;
-    background-color: violet;
-    width: 100%;
+    min-width: 320px;
     padding-right: 0;
   }
   .footer {
