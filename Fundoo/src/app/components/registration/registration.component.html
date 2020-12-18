@@ -1,1 +1,38 @@
-<p>registration works!</p>
+<div class="container">
+  <div class="container__left">
+    <h3>Fundoo</h3>
+    <h2>Create your Fundoo Account</h2>
+    <h4>Continue to Fundoo</h4>
+    <form class="container__form">
+      <div class="form__first-row">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput autocomplete="off" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput autocomplete="off" />
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="form__second-row">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>email</mat-label>
+            <input matInput autocomplete="off" />
+            <span matSuffix>@gmail.com</span>
+            <mat-hint>You can use letters, numbers & periods</mat-hint>
+          </mat-form-field>
+        </p>
+      </div>
+    </form>
+  </div>
+  <div class="container__right">
+    <img
+      src="https://ssl.gstatic.com/accounts/signup/glif/account.svg"
+      alt="account-image"
+    />
+    <p class="tag-line">One account. All of Fundoo working for you.</p>
+  </div>
+</div>
