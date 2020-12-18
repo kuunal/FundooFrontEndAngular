@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Fundoo"
+    }
+  },
+  "defaultProject": "Fundoo",
+  "cli": {
+    "analytics": "3fd2253b-b2f3-4d93-9fc5-0540d77d79b7"
+  }
 }
