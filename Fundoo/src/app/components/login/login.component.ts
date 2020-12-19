@@ -7,13 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  email:string;
+  public email:string;
   password:string;
-  hide:boolean;
+  hide:boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  submit():void{
+    console.log(this.email,this.password);
   }
 
 }
