@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { HomeNavbarComponent } from './components/home/home-navbar/home-navbar.component'
 import { AuthGuard } from './auth.guard';
+import { SidnavComponent } from './components/home/sidnav/sidnav.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthGuard } from './auth.guard';
     RegistrationComponent,
     LoginComponent,
     HomeComponent,
-    HomeNavbarComponent
+    HomeNavbarComponent,
+    SidnavComponent
   ],
   imports: [
     BrowserModule,

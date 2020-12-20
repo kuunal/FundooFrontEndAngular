@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,9 @@ export class HomeNavbarComponent implements OnInit {
   value = ' ';
   searchForm: FormGroup;
   isFocus:boolean=false;
+  @Output() public sidebarClickedEvent = new EventEmitter();
+   isSidebarClicked:boolean=false;
+
 
   constructor(private builder: FormBuilder) { }
 
@@ -17,6 +20,11 @@ export class HomeNavbarComponent implements OnInit {
     this.searchForm = this.builder.group({
       searchbar: ''
     })
+  }
+
+  sidebarClicked(){
+    this.isSidebarClicked = !this.isSidebarClicked;
+    this.sidebarClickedEvent.emit(this.isSidebarClicked);
   }
 
   get searchbar(){
