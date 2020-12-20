@@ -13,4 +13,9 @@ export class LoginserviceService {
     return this.http.post(data, uri);
   }
 
+  loggedIn(){
+    console.log("jhere")
+    return !!localStorage.getItem('token');
+  }
+
 }
