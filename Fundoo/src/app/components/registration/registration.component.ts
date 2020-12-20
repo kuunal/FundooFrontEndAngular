@@ -14,6 +14,7 @@ export class RegistrationComponent implements OnInit {
 
   backendUri:string = environment.backendUri;
   myForm: FormGroup;
+  userAlreadyExists: boolean = false;
 
   constructor(private builder : FormBuilder, private service:LoginserviceService, private router: Router) { }
 
@@ -63,6 +64,9 @@ export class RegistrationComponent implements OnInit {
     return this.myForm.get('showPassword').value;
   }
 
+  signIn():void{
+    this.router.navigate(["/login"])
+  }
   
   submit():void{
     let data = this.myForm.value;
@@ -70,7 +74,7 @@ export class RegistrationComponent implements OnInit {
     data.service = "advance";
     this.service.login(data, `${this.backendUri}user/userSignUp`).subscribe(
       response=>this.router.navigate(["/login"]),
-      error=>console.log(error)
+      error=>this.userAlreadyExists=true
     );
   }
 }

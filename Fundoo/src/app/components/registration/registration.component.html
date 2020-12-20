@@ -37,6 +37,10 @@
             <mat-error *ngIf="email.invalid && email.touched">
               Please provide proper email!
             </mat-error>
+            <mat-error *ngIf="userAlreadyExists">
+              email already exists!
+            </mat-error>
+            {{ userAlreadyExists }}
           </mat-form-field>
         </p>
       </div>
@@ -83,7 +87,9 @@
         </span>
       </div>
       <div class="container__buttons">
-        <button mat-flat-button type="button">Sign in instead</button>
+        <button mat-flat-button type="button" (click)="signIn()">
+          Sign in instead
+        </button>
         <button mat-raised-button color="primary" [disabled]="!myForm.valid">
           Next
         </button>
