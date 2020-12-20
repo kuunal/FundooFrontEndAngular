@@ -63,7 +63,9 @@
   </form>
   <div class="toolbar__right">
     <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon class="menu-icon">account_circle</mat-icon>
+      <mat-icon [style.font-size]="'32px'" class="menu-icon"
+        >account_circle</mat-icon
+      >
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>Item 1</button>
