@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HomeNavbarComponent } from './components/home/home-navbar/home-navbar.component'
 import { AuthGuard } from './auth.guard';
 import { SidnavComponent } from './components/home/sidnav/sidnav.component';
+import { MenuComponent } from './components/home/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SidnavComponent } from './components/home/sidnav/sidnav.component';
     LoginComponent,
     HomeComponent,
     HomeNavbarComponent,
-    SidnavComponent
+    SidnavComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
