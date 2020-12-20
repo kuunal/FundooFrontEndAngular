@@ -16,8 +16,8 @@
             <input matInput autocomplete="off" formControlName="firstName" />
             <mat-error *ngIf="firstName.invalid && firstName.touched">
               Please provide first name!
-            </mat-error></mat-form-field
-          >
+            </mat-error>
+          </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
             <input matInput autocomplete="off" formControlName="lastName" />
@@ -83,7 +83,7 @@
         </span>
       </div>
       <div class="container__buttons">
-        <button mat-flat-button>Sign in instead</button>
+        <button mat-flat-button type="button">Sign in instead</button>
         <button mat-raised-button color="primary" [disabled]="!myForm.valid">
           Next
         </button>
@@ -105,8 +105,8 @@
     </select>
   </div>
   <div class="footer__right">
-    <button mat-flat-button>Help</button>
-    <button mat-flat-button>Privacy</button>
-    <button mat-flat-button>Terms</button>
+    <button mat-flat-button type="button">Help</button>
+    <button mat-flat-button type="button">Privacy</button>
+    <button mat-flat-button type="button">Terms</button>
   </div>
 </div>

@@ -33,6 +33,7 @@
           mat-icon-button
           matSuffix
           (click)="hide = !hide"
+          type="button"
           [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide"
         >
@@ -64,8 +65,8 @@
     </select>
   </div>
   <div class="footer__right">
-    <button mat-flat-button>Help</button>
-    <button mat-flat-button>Privacy</button>
-    <button mat-flat-button>Terms</button>
+    <button mat-flat-button type="button">Help</button>
+    <button mat-flat-button type="button">Privacy</button>
+    <button mat-flat-button type="button">Terms</button>
   </div>
 </div>
