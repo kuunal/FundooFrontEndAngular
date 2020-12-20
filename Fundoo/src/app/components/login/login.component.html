@@ -7,11 +7,19 @@
   </h2>
   <h1>Sign in</h1>
   <h4>to Continue to Fundoo</h4>
-  <form (ngSubmit)="submit()">
+  <form (ngSubmit)="submit()" [formGroup]="myForm">
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput autocomplete="off" name="email" [(ngModel)]="email" />
+        <input
+          matInput
+          autocomplete="off"
+          name="email"
+          formControlName="email"
+        />
+        <mat-error *ngIf="email.invalid && email.touched">
+          Invalid email!
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Enter your password</mat-label>
@@ -19,7 +27,7 @@
           name="password"
           matInput
           [type]="hide ? 'password' : 'text'"
-          [(ngModel)]="password"
+          formControlName="password"
         />
         <button
           mat-icon-button
@@ -30,12 +38,22 @@
         >
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
+        <mat-error *ngIf="password.invalid && password.touched">
+          Invalid Password!
+        </mat-error>
       </mat-form-field>
     </p>
     <a href="https://www.google.com/" target="_blank">Forgot Password?</a>
     <div class="last-row">
       <button mat-flat-button>Create account</button>
-      <button mat-flat-button color="primary" type="submit">Submit</button>
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        [disabled]="!myForm.valid"
+      >
+        Submit
+      </button>
     </div>
   </form>
 </div>

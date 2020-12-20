@@ -8,11 +8,11 @@ export class HttpServicesService {
 
   constructor(private http: HttpClient) { }
 
-  postService(data,url: string,isRequired = false,header=null) {
+  post(data,url: string,isRequired = false,header=null) {
     return this.http.post(url,data,isRequired && header);
   }
 
-  getService(url:string,isRequired = false,header=null){
+  get(url:string,isRequired = false,header=null){
     return this.http.get(url,isRequired && header);
   }
 }
