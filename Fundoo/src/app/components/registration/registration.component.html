@@ -8,7 +8,7 @@
     </h2>
     <h1>Create your Fundoo Account</h1>
     <h4>Continue to Fundoo</h4>
-    <form class="container__form" [formGroup]="myForm">
+    <form class="container__form" [formGroup]="myForm" (ngSubmit)="submit()">
       <div class="form__first-row">
         <p>
           <mat-form-field appearance="outline">
@@ -84,7 +84,9 @@
       </div>
       <div class="container__buttons">
         <button mat-flat-button>Sign in instead</button>
-        <button mat-raised-button color="primary">Next</button>
+        <button mat-raised-button color="primary" [disabled]="!myForm.valid">
+          Next
+        </button>
       </div>
     </form>
   </div>

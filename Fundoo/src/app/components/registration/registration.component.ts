@@ -58,4 +58,8 @@ export class RegistrationComponent implements OnInit {
   get showPassword(){
     return this.myForm.get('showPassword').value;
   }
+
+  submit():void{
+    console.log(this.myForm.value);
+  }
 }
