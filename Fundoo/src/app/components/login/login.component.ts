@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginserviceService } from 'src/app/services/login/loginservice.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   hide:boolean = true;
   myForm: FormGroup;
 
-  constructor(private builder : FormBuilder) { }
+  constructor(private builder : FormBuilder, private service:LoginserviceService) { }
 
   ngOnInit(): void {
     this.myForm = this.builder.group({
@@ -37,7 +38,10 @@ export class LoginComponent implements OnInit {
   }
 
   submit():void{
-    console.log(this.myForm.value)
+    this.service.login(this.myForm.value, `${this.backendUri}user/login`).subscribe(
+      response=>console.log(response),
+      error=>console.log(error)
+    );
   }
 
 }

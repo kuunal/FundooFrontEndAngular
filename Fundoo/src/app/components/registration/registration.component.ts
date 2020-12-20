@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginserviceService } from 'src/app/services/login/loginservice.service';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,9 +12,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistrationComponent implements OnInit {
 
+  backendUri:string = environment.backendUri;
   myForm: FormGroup;
 
-  constructor(private builder : FormBuilder) { }
+  constructor(private builder : FormBuilder, private service:LoginserviceService, private router: Router) { }
 
   ngOnInit(): void {
     this.myForm = this.builder.group({
@@ -59,7 +63,14 @@ export class RegistrationComponent implements OnInit {
     return this.myForm.get('showPassword').value;
   }
 
+  
   submit():void{
-    console.log(this.myForm.value);
+    let data = this.myForm.value;
+    data.cartId = "5fdef64cd5d3de001e5d843a";
+    data.service = "advance";
+    this.service.login(data, `${this.backendUri}user/userSignUp`).subscribe(
+      response=>this.router.navigate(["/login"]),
+      error=>console.log(error)
+    );
   }
 }
