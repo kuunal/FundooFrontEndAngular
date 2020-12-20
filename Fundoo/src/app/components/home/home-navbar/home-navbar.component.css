@@ -1,0 +1,127 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.toolbar__right {
+  display: flex;
+  justify-content: space-between;
+  justify-items: flex-end;
+  justify-self: flex-end;
+  align-items: center;
+}
+
+.mat-button {
+  min-width: 0px;
+  padding: 2px;
+  line-height: 0;
+
+  border-radius: 50%;
+}
+
+.toolbar__left {
+  display: flex;
+  align-items: center;
+}
+
+.mat-toolbar {
+  background-color: white;
+  border-bottom: 1.5px solid gainsboro;
+  display: flex;
+  justify-content: space-between;
+  min-width: 0px;
+}
+
+.toolbar__keep {
+  display: flex;
+  align-items: center;
+  color: #5f6368;
+  font-weight: 500;
+  font: 22px "Arial";
+}
+
+.toolbar__keep img {
+  padding: 5px;
+  height: 40px;
+}
+
+.toolbar__keep span {
+  padding: 5px 0 0 4px;
+  line-height: 24px;
+}
+
+.toolbar__mid {
+  flex: 1;
+  margin-left: 8%;
+  height: 100%;
+  min-width: 200px;
+}
+
+.search {
+  display: flex;
+  height: 100%;
+  width: 70%;
+  align-items: center;
+  position: relative;
+}
+
+#search-input:focus {
+  background-color: white;
+  box-shadow: 0px 1px 2px 0px gray;
+}
+
+#search-input {
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.05);
+  outline: none;
+  padding: 1.3em;
+  padding-left: 3em;
+}
+
+.search__icon {
+  position: absolute;
+  left: 10px;
+}
+
+.search__icon-close {
+  right: 10px;
+  position: absolute;
+}
+
+/* .toolbar__mid .mat-icon {
+  top: 25%;
+} */
+
+/* .toolbar__mid .mat-form-field {
+  font-size: 14px;
+  width: 70%;
+  margin-top: 10px;
+  background-color: #f3f2f1;
+  height: 90%; 
+  height: 70%;
+} */
+
+/* /deep/ .mat-form-field-wrapper {
+  padding: 0% !important;
+}
+
+/deep/ .mat-form-field-flex {
+  align-items: center !important;
+  height: 100%;
+}
+
+/deep/ .mat-form-field input {
+  margin: 0;
+  height: 40px;
+}
+
+/deep/ .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0 !important;
+}
+/deep/ .mat-form-field-appearance-outline .mat-form-field-flex {
+  margin-top: -1.5% !important;
+} */
+
+.focus {
+  background-color: white;
+  box-shadow: 0px 0px 2px 0px gainsboro;
+}

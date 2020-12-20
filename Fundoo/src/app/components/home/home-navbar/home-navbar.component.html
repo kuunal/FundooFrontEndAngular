@@ -1,0 +1,73 @@
+<mat-toolbar>
+  <div class="toolbar__left">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="toolbar__keep">
+      <img
+        src="https://www.gstatic.com/images/branding/product/2x/keep_2020q4_48dp.png"
+        alt="keep-image"
+      />
+      <span>Keep</span>
+    </span>
+  </div>
+  <form class="toolbar__mid" [formGroup]="searchForm">
+    <div class="search">
+      <mat-icon class="search__icon">search</mat-icon>
+      <input
+        type="text"
+        formControlName="searchbar"
+        id="search-input"
+        autocomplete="off"
+      />
+      <button
+        mat-icon-button
+        *ngIf="searchbar.value"
+        (click)="reset()"
+        class="search__icon-close"
+      >
+        <mat-icon> close </mat-icon>
+      </button>
+    </div>
+    <!-- <mat-form-field
+      class="example-form-field"
+      floatLabel="never"
+      appearance="outline"
+      [style.background-color]="isFocus ? 'white' : 'gainsboro'"
+      [style.box-shadow]="isFocus ? '2px 2px 5px 5px gainsboro' : 'none'"
+    >
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="value"
+        formControlName="searchbar"
+        (focus)="onFocus()"
+        (blur)="isFocus = false"
+      />
+      <mat-icon matPrefix>search</mat-icon>
+      <button
+        mat-button
+        *ngIf="value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="value = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field> -->
+  </form>
+  <div class="toolbar__right">
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon class="menu-icon">account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

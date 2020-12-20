@@ -6,6 +6,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRippleModule} from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 const material = [
@@ -15,7 +17,9 @@ const material = [
   MatSelectModule,
   MatCheckboxModule,
   MatRippleModule,
-  MatIconModule
+  MatIconModule,
+  MatToolbarModule,
+  MatMenuModule
 ];
   
 @NgModule({
