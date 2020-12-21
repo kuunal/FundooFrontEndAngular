@@ -15,6 +15,8 @@ import { SidnavComponent } from './components/home/sidnav/sidnav.component';
 import { MenuComponent } from './components/home/menu/menu.component';
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
 import { AddnotesComponent } from './components/home/addnotes/addnotes.component';
+import { AddnotetoggleComponent } from './components/home/addnotetoggle/addnotetoggle.component';
+import { RemainderIconComponent } from './components/home/buttons/remainder-icon/remainder-icon.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AddnotesComponent } from './components/home/addnotes/addnotes.component
     HomeNavbarComponent,
     SidnavComponent,
     MenuComponent,
-    AddnotesComponent
+    AddnotesComponent,
+    AddnotetoggleComponent,
+    RemainderIconComponent,
   ],
   imports: [
     BrowserModule,

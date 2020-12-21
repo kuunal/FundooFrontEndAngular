@@ -11,6 +11,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 
 const material = [
@@ -25,7 +26,8 @@ const material = [
   MatMenuModule,
   MatSidenavModule,
   MatSnackBarModule,
-  MatCardModule
+  MatCardModule,
+  TextFieldModule
 ];
   
 @NgModule({
