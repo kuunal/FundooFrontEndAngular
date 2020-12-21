@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   @Input() isSidebarClicked:boolean;
+  @Input() isMenuClicked:boolean;
   constructor() { }
 
   ngOnInit(): void {

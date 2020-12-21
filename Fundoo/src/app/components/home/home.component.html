@@ -1,6 +1,8 @@
 <div class="container">
   <app-home-navbar
     (sidebarClickedEvent)="isSidebarClicked = $event"
+    (menuClickedEvent)="isMenuClicked = $event"
   ></app-home-navbar>
+  <app-menu *ngIf="isMenuClicked"></app-menu>
   <app-sidnav [isSidebarClicked]="isSidebarClicked"></app-sidnav>
 </div>

@@ -1,0 +1,96 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  height: 370px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  background-color: white;
+  z-index: 99;
+}
+
+.container > * {
+  padding: 0.5em;
+  margin: 0;
+}
+
+.container__image button {
+  padding: 0;
+  margin: 0;
+}
+
+element.style {
+  font-size: 52px;
+}
+
+.container__info {
+  margin: 0;
+  font-size: 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container__info span {
+  font-weight: 500;
+}
+
+.container__info p {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.container__manage button {
+  border-radius: 20px;
+}
+
+.container__anoter-account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.container__anoter-account button {
+  width: 100%;
+  border: 1px solid gainsboro;
+  margin-bottom: 0px;
+  padding: 0.5em;
+}
+
+.container__anoter-account button:hover {
+  background-color: gainsboro;
+}
+
+.container__anoter-account button img {
+  height: 24px;
+  width: 24px;
+}
+
+.container__sign-out {
+  margin-top: 0px;
+  text-align: center;
+  width: 100%;
+  border: 1px solid gainsboro;
+}
+
+.container__sign-out button {
+  margin: 0.8em;
+  padding: 0.3em;
+  width: 80px;
+}
+
+.footer {
+  display: flex;
+  padding: 1em;
+  justify-content: center;
+}
+
+footer a {
+  padding: 0em;
+}

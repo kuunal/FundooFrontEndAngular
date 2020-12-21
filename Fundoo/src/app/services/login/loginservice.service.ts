@@ -13,8 +13,11 @@ export class LoginserviceService {
     return this.http.post(data, uri);
   }
 
+  register(data, uri): Observable<any>{
+    return this.http.post(data, uri);
+  }
+
   loggedIn(){
-    console.log("jhere")
     return !!localStorage.getItem('token');
   }
 

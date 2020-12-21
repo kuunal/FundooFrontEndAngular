@@ -10,8 +10,10 @@ export class HomeNavbarComponent implements OnInit {
   value = ' ';
   searchForm: FormGroup;
   isFocus:boolean=false;
+  isMenuClicked:boolean=false;
   @Output() public sidebarClickedEvent = new EventEmitter();
-   isSidebarClicked:boolean=false;
+  @Output() public menuClickedEvent = new EventEmitter();
+  isSidebarClicked:boolean=false;
 
 
   constructor(private builder: FormBuilder) { }
@@ -33,6 +35,12 @@ export class HomeNavbarComponent implements OnInit {
   
   reset(){
     this.searchForm.setValue({"searchbar":" "});
+  }
+
+  menuClicked(){
+    console.log("clickeddddddddddddddddddd")
+    this.isMenuClicked = !this.isMenuClicked;
+    this.menuClickedEvent.emit(this.isMenuClicked);
   }
 
 }
