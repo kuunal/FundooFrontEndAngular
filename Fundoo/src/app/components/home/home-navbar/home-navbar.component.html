@@ -64,7 +64,12 @@
     </mat-form-field> -->
   </form>
   <div class="toolbar__right">
-    <button mat-mini-fab disableRipple (click)="menuClicked()">
+    <button
+      mat-mini-fab
+      disableRipple
+      (click)="menuClicked()"
+      (blur)="menuClicked()"
+    >
       <mat-icon class="menu-icon">account_circle</mat-icon>
     </button>
   </div>

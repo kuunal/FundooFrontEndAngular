@@ -14,6 +14,7 @@ import { AuthGuard } from './auth.guard';
 import { SidnavComponent } from './components/home/sidnav/sidnav.component';
 import { MenuComponent } from './components/home/menu/menu.component';
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
+import { AddnotesComponent } from './components/home/addnotes/addnotes.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TokenInterceptorService } from './services/token-interceptor/token-inte
     HomeComponent,
     HomeNavbarComponent,
     SidnavComponent,
-    MenuComponent
+    MenuComponent,
+    AddnotesComponent
   ],
   imports: [
     BrowserModule,

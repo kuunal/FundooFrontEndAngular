@@ -1,0 +1,49 @@
+.container {
+  padding: 2em;
+  margin-left: 25%;
+}
+
+mat-card {
+  box-shadow: 1px 1px 5px 1px gainsboro !important;
+  padding: 0;
+  width: 50vw;
+  padding: 0.1em;
+  border-radius: 8px;
+}
+
+input {
+  width: 38vw;
+  font-weight: bold;
+  padding: 0.8em;
+  border: none;
+  border-radius: 8px;
+  letter-spacing: 0.01428571em;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  outline: none;
+  color: #202124;
+}
+
+mat-checkbox {
+  background-color: transparent;
+  background: none;
+}
+
+img {
+  opacity: 0.5;
+}
+
+/deep/ .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: gray;
+}
+
+/deep/.mat-checkbox-checked.mat-accent
+  .mat-checkbox-ripple
+  .mat-ripple-element {
+  opacity: 0.03 !important;
+  background-color: none !important;
+  outline: none;
+}

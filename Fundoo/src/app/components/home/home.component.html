@@ -3,6 +3,7 @@
     (sidebarClickedEvent)="isSidebarClicked = $event"
     (menuClickedEvent)="isMenuClicked = $event"
   ></app-home-navbar>
-  <app-menu *ngIf="isMenuClicked"></app-menu>
   <app-sidnav [isSidebarClicked]="isSidebarClicked"></app-sidnav>
+  <app-menu [isMenuClicked]="isMenuClicked"></app-menu>
+  <app-addnotes></app-addnotes>
 </div>
