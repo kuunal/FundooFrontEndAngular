@@ -57,5 +57,8 @@ mat-card-actions {
 
 mat-icon {
   opacity: 0.5;
-  padding-left: 15px;
+}
+
+/deep/ .mat-button-focus-overlay {
+  background-color: transparent !important;
 }

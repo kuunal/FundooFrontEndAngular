@@ -18,6 +18,12 @@ import { AddnotesComponent } from './components/home/addnotes/addnotes.component
 import { AddnotetoggleComponent } from './components/home/addnotetoggle/addnotetoggle.component';
 import { RemainderIconComponent } from './components/home/buttons/remainder-icon/remainder-icon.component';
 import { AddCollaboratorComponent } from './components/home/buttons/add-collaborator/add-collaborator.component';
+import { PaintComponent } from './components/home/buttons/paint/paint.component';
+import { PictureComponent } from './components/home/buttons/picture/picture.component';
+import { ArchieveComponent } from './components/home/buttons/archieve/archieve.component';
+import { MoreComponent } from './components/home/buttons/more/more.component';
+import { UndoComponent } from './components/home/buttons/undo/undo.component';
+import { RedoComponent } from './components/home/buttons/redo/redo.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +38,12 @@ import { AddCollaboratorComponent } from './components/home/buttons/add-collabor
     AddnotetoggleComponent,
     RemainderIconComponent,
     AddCollaboratorComponent,
+    PaintComponent,
+    PictureComponent,
+    ArchieveComponent,
+    MoreComponent,
+    UndoComponent,
+    RedoComponent,
   ],
   imports: [
     BrowserModule,
