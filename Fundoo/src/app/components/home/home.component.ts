@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import {AddnotesComponent} from './addnotes/addnotes.component';
+
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,9 @@ export class HomeComponent implements OnInit {
 
   @Input() isSidebarClicked:boolean;
   @Input() isMenuClicked:boolean;
-  constructor() { }
 
+  constructor() { }
+ 
   ngOnInit(): void {
   }
 

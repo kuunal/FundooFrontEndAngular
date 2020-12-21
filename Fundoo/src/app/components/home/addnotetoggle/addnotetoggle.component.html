@@ -1,4 +1,10 @@
-<div class="container">
+<form
+  class="container"
+  [formGroup]="noteForm"
+  tabindex="0"
+  (blur)="isFocused = false"
+  *ngIf="isFocused; else notebar"
+>
   <mat-card>
     <mat-card-title>
       <textarea
@@ -9,6 +15,7 @@
         cdkAutosizeMaxRows="5"
         placeholder="Title"
         class="title"
+        formControlName="title"
       ></textarea>
       <app-pin-component></app-pin-component>
     </mat-card-title>
@@ -20,6 +27,7 @@
         cdkAutosizeMinRows="1"
         cdkAutosizeMaxRows="5"
         placeholder="Take a note..."
+        formControlName="description"
       ></textarea>
     </mat-card-content>
     <mat-card-actions>
@@ -33,6 +41,15 @@
         <app-undo-component></app-undo-component>
         <app-redo-component></app-redo-component>
       </div>
+      <div class="actions-right">
+        <app-close-component (click)="submit()"></app-close-component>
+      </div>
     </mat-card-actions>
   </mat-card>
-</div>
+</form>
+
+<ng-template #notebar>
+  <app-addnotes (click)="isFocused = true"></app-addnotes>
+</ng-template>
+
+{{ isFocused }}

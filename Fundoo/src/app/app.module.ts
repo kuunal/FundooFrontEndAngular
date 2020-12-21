@@ -27,6 +27,7 @@ import { RedoComponent } from './components/home/buttons/redo/redo.component';
 import { PinComponent } from './components/home/buttons/pin/pin.component';
 import { CheckboxComponent } from './components/home/buttons/checkbox/checkbox.component';
 import { EditComponent } from './components/home/buttons/edit/edit.component';
+import { CloseComponent } from './components/home/buttons/close/close.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { EditComponent } from './components/home/buttons/edit/edit.component';
     PinComponent,
     CheckboxComponent,
     EditComponent,
+    CloseComponent,
   ],
   imports: [
     BrowserModule,
