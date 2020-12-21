@@ -1,5 +1,5 @@
 <div [class]="!isSidebarClicked ? sidebarClass : sidebarHoverClass">
-  <div class="sidebar__notes sidebar__notes-notes">
+  <div class="sidebar__notes sidebar__notes-notes" (click)="notesClicked()">
     <button>
       <img
         src="https://static.thenounproject.com/png/10329-200.png"

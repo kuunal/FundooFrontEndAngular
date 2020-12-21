@@ -34,11 +34,10 @@ export class HomeNavbarComponent implements OnInit {
   }
   
   reset(){
-    this.searchForm.setValue({"searchbar":" "});
+    this.searchForm.setValue({"searchbar":null});
   }
 
   menuClicked(){
-    console.log("clickeddddddddddddddddddd")
     this.isMenuClicked = !this.isMenuClicked;
     this.menuClickedEvent.emit(this.isMenuClicked);
   }

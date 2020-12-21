@@ -17,6 +17,13 @@ export class SidnavComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
+    }
 
+    notesClicked(){
+      console.log("clicked")
+    }
+
+    logout(){
+      localStorage.clear();
+    }
 }

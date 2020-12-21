@@ -37,10 +37,7 @@
             <mat-error *ngIf="email.invalid && email.touched">
               Please provide proper email!
             </mat-error>
-            <mat-error *ngIf="userAlreadyExists">
-              email already exists!
-            </mat-error>
-            {{ userAlreadyExists }}
+            <!-- <mat-error *ngIf="true"> email already exists! </mat-error> -->
           </mat-form-field>
         </p>
       </div>
@@ -69,7 +66,7 @@
               formControlName="confirmPassword"
               [type]="showPassword ? 'password' : 'text'"
             />
-            <mat-error *ngIf="confirmPassword">
+            <mat-error *ngIf="!confirmPassword">
               Please match password and confirm password!
             </mat-error>
           </mat-form-field>

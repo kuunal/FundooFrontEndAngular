@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginserviceService } from 'src/app/services/login/loginservice.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -16,7 +17,10 @@ export class RegistrationComponent implements OnInit {
   myForm: FormGroup;
   userAlreadyExists: boolean = false;
 
-  constructor(private builder : FormBuilder, private service:LoginserviceService, private router: Router) { }
+  constructor(private builder : FormBuilder
+    , private service:LoginserviceService
+    , private router: Router
+    , private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.myForm = this.builder.group({
@@ -74,7 +78,13 @@ export class RegistrationComponent implements OnInit {
     data.service = "advance";
     this.service.register(data, `${this.backendUri}user/userSignUp`).subscribe(
       response=>this.router.navigate(["/login"]),
-      error=>this.userAlreadyExists=true
+      error=>this.snackBar.open('User already exists',``, {
+        duration: 2000,
+      })
     );
+  }
+
+  setUserAlreadyExist(){
+    this.userAlreadyExists=true;
   }
 }

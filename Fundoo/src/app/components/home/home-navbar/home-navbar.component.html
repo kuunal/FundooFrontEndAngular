@@ -28,7 +28,7 @@
       />
       <button
         mat-icon-button
-        *ngIf="searchbar.value"
+        *ngIf="!!searchbar.value"
         (click)="reset()"
         class="search__icon-close"
       >
