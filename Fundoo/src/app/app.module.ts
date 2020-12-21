@@ -17,6 +17,7 @@ import { TokenInterceptorService } from './services/token-interceptor/token-inte
 import { AddnotesComponent } from './components/home/addnotes/addnotes.component';
 import { AddnotetoggleComponent } from './components/home/addnotetoggle/addnotetoggle.component';
 import { RemainderIconComponent } from './components/home/buttons/remainder-icon/remainder-icon.component';
+import { AddCollaboratorComponent } from './components/home/buttons/add-collaborator/add-collaborator.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RemainderIconComponent } from './components/home/buttons/remainder-icon
     AddnotesComponent,
     AddnotetoggleComponent,
     RemainderIconComponent,
+    AddCollaboratorComponent,
   ],
   imports: [
     BrowserModule,
