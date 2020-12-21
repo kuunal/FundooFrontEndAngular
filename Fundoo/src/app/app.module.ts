@@ -24,6 +24,9 @@ import { ArchieveComponent } from './components/home/buttons/archieve/archieve.c
 import { MoreComponent } from './components/home/buttons/more/more.component';
 import { UndoComponent } from './components/home/buttons/undo/undo.component';
 import { RedoComponent } from './components/home/buttons/redo/redo.component';
+import { PinComponent } from './components/home/buttons/pin/pin.component';
+import { CheckboxComponent } from './components/home/buttons/checkbox/checkbox.component';
+import { EditComponent } from './components/home/buttons/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { RedoComponent } from './components/home/buttons/redo/redo.component';
     MoreComponent,
     UndoComponent,
     RedoComponent,
+    PinComponent,
+    CheckboxComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
