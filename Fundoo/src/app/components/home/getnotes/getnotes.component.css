@@ -1,5 +1,6 @@
 .container {
-  margin-left: 50px;
+  width: 85%;
+  margin: 2% auto;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -7,5 +8,5 @@
 }
 
 .container > * {
-  padding: 2em;
+  padding: 0.5em;
 }

@@ -5,6 +5,9 @@
   ></app-home-navbar>
   <app-sidnav [isSidebarClicked]="isSidebarClicked"></app-sidnav>
   <app-menu [isMenuClicked]="isMenuClicked"></app-menu>
-  <app-addnotetoggle></app-addnotetoggle>
+  <app-addnotetoggle *ngIf="isFocused; else notebar"></app-addnotetoggle>
   <app-getnotes></app-getnotes>
+  <ng-template #notebar>
+    <app-addnotes></app-addnotes>
+  </ng-template>
 </div>

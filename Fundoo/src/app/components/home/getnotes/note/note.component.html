@@ -1,4 +1,4 @@
-<span>
+<div (mouseenter)="isFocused = true" (mouseleave)="isFocused = false">
   <mat-card>
     <mat-card-title>
       <span>
@@ -12,7 +12,7 @@
     <mat-card-content>
       {{ note.description }}
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions [style.opacity]="!isFocused ? '0' : '1'">
       <app-remainder-icon-component></app-remainder-icon-component>
       <app-add-collaborator-component></app-add-collaborator-component>
       <app-paint-component></app-paint-component>
@@ -21,4 +21,4 @@
       <app-more-component [noteId]="note.id"></app-more-component>
     </mat-card-actions>
   </mat-card>
-</span>
+</div>

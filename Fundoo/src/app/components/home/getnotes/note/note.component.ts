@@ -10,6 +10,8 @@ import { NotesService } from 'src/app/services/notes/notes.service';
 export class NoteComponent implements OnInit {
 
   @Input() note:any;
+  isFocused: boolean = false;
+
   constructor(private _service: NotesService
     ,private snackBar: MatSnackBar) { }
 

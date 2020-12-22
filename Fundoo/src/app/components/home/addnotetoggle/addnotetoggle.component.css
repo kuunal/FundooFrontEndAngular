@@ -60,14 +60,16 @@ mat-card-actions {
   flex-wrap: wrap;
 }
 
-mat-icon {
-  opacity: 0.5;
-}
-
 mat-card-actions:last-child {
   justify-self: flex-end;
 }
 
-/deep/ .mat-button-focus-overlay {
+/* /deep/ .mat-button-focus-overlay {
   background-color: transparent !important;
-}
+} */
+
+/* .mat-icon-button,
+mat-icon {
+  width: 24px !important;
+  height: 24px !important;
+} */

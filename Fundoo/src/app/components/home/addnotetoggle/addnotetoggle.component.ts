@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from 'src/app/services/notes/notes.service';
@@ -8,13 +8,17 @@ import { NotesService } from 'src/app/services/notes/notes.service';
   templateUrl: './addnotetoggle.component.html',
   styleUrls: ['./addnotetoggle.component.css']
 })
-export class AddnotetoggleComponent implements OnInit {
+export class AddnotetoggleComponent implements OnInit{
 
   noteForm: FormGroup;
   isFocused : boolean = false;
-  constructor(private builder : FormBuilder, private _service: NotesService, private snackBar: MatSnackBar) { }
-
+  undo:string[];
+  constructor(private builder : FormBuilder
+    , private _service: NotesService
+    , private snackBar: MatSnackBar) { }
+  
   ngOnInit(): void {
+    
     this.noteForm = this.builder.group({
       title:'',
       description:'',
@@ -27,8 +31,8 @@ export class AddnotetoggleComponent implements OnInit {
     })
   }
 
-  toggleFocus(){
-    this.isFocused= true
+  undoAction(){
+    console.log(this.undo,"asdasdasas")
   }
 
   get isPined(){
@@ -50,18 +54,11 @@ export class AddnotetoggleComponent implements OnInit {
   }
 
   submit(){
-    if( this.title == "" 
-    && this.description == "")
-    {
-      this.toggleFocus()
-      return
-    } 
     this._service.addNote(this.noteForm.value).subscribe(
-      response=>this.toggleFocus(),
+      response=>console.log("sadasd"),
       error=>this.snackBar.open('Error adding notes', '', {
         duration: 2000,
       })
     );
   }
-
 }

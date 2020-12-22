@@ -1,5 +1,5 @@
 mat-card {
-  width: 250px !important;
+  width: 225px !important;
 }
 
 mat-card-title {
@@ -8,6 +8,10 @@ mat-card-title {
   align-items: center;
   word-break: break-all;
   font-size: 1rem;
+}
+
+app-pin-component {
+  align-self: flex-start;
 }
 
 mat-card-content {
@@ -20,4 +24,23 @@ mat-card {
   box-shadow: none !important;
   border: 1px solid gainsboro;
   min-width: 100px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-card-actions > {
+  width: 24px;
+  height: 24px;
+  /* margin-bottom: 2%; */
+}
+
+div {
+  transition: all ease 0.4s;
+}
+
+div:hover {
+  box-shadow: 0px 0px 5px 2px gainsboro;
 }

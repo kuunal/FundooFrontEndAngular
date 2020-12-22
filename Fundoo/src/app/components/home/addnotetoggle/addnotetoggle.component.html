@@ -1,9 +1,7 @@
 <form
   class="container"
   [formGroup]="noteForm"
-  (blur)="isFocused = false"
-  tabindex="-1"
-  *ngIf="isFocused; else notebar"
+  id="add-note-form"
   (ngSubmit)="submit()"
 >
   <mat-card>
@@ -32,6 +30,8 @@
         cdkAutosizeMaxRows="5"
         placeholder="Take a note..."
         formControlName="description"
+        name="description"
+        ([ngModel])="(description)"
       ></textarea>
     </mat-card-content>
     <mat-card-actions>
@@ -42,7 +42,7 @@
         <app-picture-component></app-picture-component>
         <app-archieve-component></app-archieve-component>
         <app-more-component></app-more-component>
-        <app-undo-component></app-undo-component>
+        <app-undo-component (click)="undoAction()"></app-undo-component>
         <app-redo-component></app-redo-component>
       </div>
       <div class="actions-right">
@@ -51,7 +51,3 @@
     </mat-card-actions>
   </mat-card>
 </form>
-
-<ng-template #notebar>
-  <app-addnotes (click)="isFocused = true"></app-addnotes>
-</ng-template>
