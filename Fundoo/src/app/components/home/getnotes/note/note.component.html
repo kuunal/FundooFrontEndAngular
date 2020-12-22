@@ -4,7 +4,7 @@
       <span>
         {{ note.title }}
       </span>
-      <app-pin-component></app-pin-component>
+      <app-pin-component [isPined]="note.isPined"></app-pin-component>
     </mat-card-title>
     <mat-card-content>
       {{ note.description }}

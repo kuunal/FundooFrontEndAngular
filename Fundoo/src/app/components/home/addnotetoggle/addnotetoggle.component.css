@@ -64,6 +64,10 @@ mat-icon {
   opacity: 0.5;
 }
 
+mat-card-actions:last-child {
+  justify-self: flex-end;
+}
+
 /deep/ .mat-button-focus-overlay {
   background-color: transparent !important;
 }

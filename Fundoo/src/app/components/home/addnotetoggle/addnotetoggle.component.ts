@@ -27,10 +27,32 @@ export class AddnotetoggleComponent implements OnInit {
     })
   }
 
+  toggleFocus(){
+    this.isFocused= !this.isFocused 
+  }
+
+  get isPined(){
+    return this.noteForm.get('isPined').value;
+  }
+
+  get title(){
+    return this.noteForm.get('title').value;
+  }
+
+  get description(){
+    return this.noteForm.get('description').value;
+  }
+
+
+  togglePin(){
+    this.noteForm.get('isPined').setValue(!this.isPined); 
+    console.log(this.isPined)
+  }
+
   submit(){
     console.log(this.noteForm.value)
-    if(this.noteForm['title'] == null 
-    && this.noteForm['description'] == null)
+    if( this.title == null 
+    && this.description == null)
     {
       this.toggleFocus()
       return
@@ -41,10 +63,6 @@ export class AddnotetoggleComponent implements OnInit {
         duration: 2000,
       })
     );
-  }
-
-  toggleFocus(){
-    this.isFocused= !this.isFocused 
   }
 
 }

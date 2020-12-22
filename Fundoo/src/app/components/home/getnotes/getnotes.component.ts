@@ -21,8 +21,10 @@ export class GetnotesComponent implements OnInit {
   }
   private getNotes(){
     this._service.getNote().subscribe(
-      response=>{this.notes = response.data.data
-        console.log(response.data)
+      response=>{this.notes = response.data
+        .data.sort((note, nextNote)=>note.isPined - nextNote.isPined)
+        .reverse()
+        console.log(this.notes)
       },
       error=> this.snackBar.open('Error fetching notes!', '', {
         duration: 2000,

@@ -4,6 +4,7 @@
   (blur)="isFocused = false"
   tabindex="-1"
   *ngIf="isFocused; else notebar"
+  (ngSubmit)="submit()"
 >
   <mat-card>
     <mat-card-title>
@@ -17,7 +18,10 @@
         class="title"
         formControlName="title"
       ></textarea>
-      <app-pin-component></app-pin-component>
+      <app-pin-component
+        (click)="togglePin()"
+        [isPined]="isPined"
+      ></app-pin-component>
     </mat-card-title>
     <mat-card-content>
       <textarea
@@ -42,7 +46,7 @@
         <app-redo-component></app-redo-component>
       </div>
       <div class="actions-right">
-        <app-close-component (click)="submit()"></app-close-component>
+        <app-close-component></app-close-component>
       </div>
     </mat-card-actions>
   </mat-card>
