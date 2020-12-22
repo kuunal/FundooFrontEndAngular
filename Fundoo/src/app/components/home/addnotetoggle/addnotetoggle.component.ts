@@ -28,7 +28,7 @@ export class AddnotetoggleComponent implements OnInit {
   }
 
   toggleFocus(){
-    this.isFocused= !this.isFocused 
+    this.isFocused= true
   }
 
   get isPined(){
@@ -50,9 +50,8 @@ export class AddnotetoggleComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.noteForm.value)
-    if( this.title == null 
-    && this.description == null)
+    if( this.title == "" 
+    && this.description == "")
     {
       this.toggleFocus()
       return
