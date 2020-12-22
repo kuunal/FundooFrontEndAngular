@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
     this.service.login(this.myForm.value, `${this.backendUri}user/login`).subscribe(
       response=>{
         localStorage.setItem('token', response.id);
+        localStorage.setItem('data', response)
         this.router.navigate(['/home']);
       },
       error=>this.snackBar.open('Error registering! Please try again later.', '', {

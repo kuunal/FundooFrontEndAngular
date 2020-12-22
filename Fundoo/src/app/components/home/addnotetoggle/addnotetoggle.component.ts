@@ -29,12 +29,22 @@ export class AddnotetoggleComponent implements OnInit {
 
   submit(){
     console.log(this.noteForm.value)
+    if(this.noteForm['title'] == null 
+    && this.noteForm['description'] == null)
+    {
+      this.toggleFocus()
+      return
+    } 
     this._service.addNote(this.noteForm.value).subscribe(
-      response=>this.isFocused=true,
+      response=>this.toggleFocus(),
       error=>this.snackBar.open('Error adding notes', '', {
         duration: 2000,
       })
     );
+  }
+
+  toggleFocus(){
+    this.isFocused= !this.isFocused 
   }
 
 }
