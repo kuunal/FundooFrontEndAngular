@@ -1,6 +1,7 @@
 .container {
   width: 85%;
   margin: 2% auto;
+  margin-left: 80px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

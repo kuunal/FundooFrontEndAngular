@@ -1,5 +1,6 @@
 mat-card {
   width: 225px !important;
+  border-radius: 10px !important;
 }
 
 mat-card-title {
@@ -31,7 +32,7 @@ mat-card-actions {
   justify-content: space-between;
 }
 
-mat-card-actions > {
+/deep/ .mat-card-actions > {
   width: 24px;
   height: 24px;
   /* margin-bottom: 2%; */
@@ -43,4 +44,5 @@ div {
 
 div:hover {
   box-shadow: 0px 0px 5px 2px gainsboro;
+  border-radius: 10px !important;
 }

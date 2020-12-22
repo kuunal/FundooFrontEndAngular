@@ -56,7 +56,7 @@ export class AddnotetoggleComponent implements OnInit{
   submit(){
     this._service.addNote(this.noteForm.value).subscribe(
       response=>console.log("sadasd"),
-      error=>this.snackBar.open('Error adding notes', '', {
+      error=>this.snackBar.open('Empty note cannot be saved', '', {
         duration: 2000,
       })
     );
