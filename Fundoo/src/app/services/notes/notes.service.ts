@@ -11,6 +11,8 @@ export class NotesService {
 
   addUri = environment.backendUri + 'notes/addNotes'
   getUri = environment.backendUri + '/notes/getNotesList'
+  unPinUri = environment.backendUri + 'notes/pinUnpinNotes';
+  deleteUri = environment.backendUri + '/notes/trashNotes';
   private _refresh$ = new Subject<void>();
 
 
@@ -32,4 +34,22 @@ export class NotesService {
   getNote(): Observable<any>{
     return this.http.get(this.getUri);
   }
+
+  togglePin(data): Observable<any>{
+    return this.http.post(data ,this.unPinUri).pipe(
+      tap(()=>{
+        this._refresh$.next();
+      })
+    );
+  }
+
+  deleteNotes(data){
+    return this.http.post(data ,this.deleteUri).pipe(
+      tap(()=>{
+        this._refresh$.next();
+      })
+    );
+  }
+
 }
+

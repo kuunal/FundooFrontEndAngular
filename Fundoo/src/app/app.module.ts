@@ -30,6 +30,7 @@ import { EditComponent } from './components/home/buttons/edit/edit.component';
 import { CloseComponent } from './components/home/buttons/close/close.component';
 import { GetnotesComponent } from './components/home/getnotes/getnotes.component';
 import { NoteComponent } from './components/home/getnotes/note/note.component';
+import { AddLabelComponent } from './components/home/buttons/add-label/add-label.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { NoteComponent } from './components/home/getnotes/note/note.component';
     CloseComponent,
     GetnotesComponent,
     NoteComponent,
+    AddLabelComponent,
   ],
   imports: [
     BrowserModule,

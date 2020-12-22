@@ -4,7 +4,10 @@
       <span>
         {{ note.title }}
       </span>
-      <app-pin-component [isPined]="note.isPined"></app-pin-component>
+      <app-pin-component
+        [isPined]="note.isPined"
+        (click)="togglePin()"
+      ></app-pin-component>
     </mat-card-title>
     <mat-card-content>
       {{ note.description }}
@@ -15,7 +18,7 @@
       <app-paint-component></app-paint-component>
       <app-picture-component></app-picture-component>
       <app-archieve-component></app-archieve-component>
-      <app-more-component></app-more-component>
+      <app-more-component [noteId]="note.id"></app-more-component>
     </mat-card-actions>
   </mat-card>
 </span>
