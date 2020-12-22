@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class AddnotetoggleComponent implements OnInit {
 
   noteForm: FormGroup;
   isFocused : boolean = false;
-  constructor(private builder : FormBuilder, private _service: NotesService) { }
+  constructor(private builder : FormBuilder, private _service: NotesService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.noteForm = this.builder.group({
@@ -30,8 +31,9 @@ export class AddnotetoggleComponent implements OnInit {
     console.log(this.noteForm.value)
     this._service.addNote(this.noteForm.value).subscribe(
       response=>this.isFocused=true,
-      error=>console.log(error)
-      
+      error=>this.snackBar.open('Error adding notes', '', {
+        duration: 2000,
+      })
     );
   }
 

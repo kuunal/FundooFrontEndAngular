@@ -1,0 +1,11 @@
+.container {
+  margin-left: 30px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  min-width: 100px;
+}
+
+.container > * {
+  padding: 2em;
+}

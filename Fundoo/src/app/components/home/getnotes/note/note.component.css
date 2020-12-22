@@ -1,0 +1,20 @@
+mat-card {
+  width: 100% !important;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+}
+
+mat-card-content {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+mat-card {
+  box-shadow: none !important;
+  border: 1px solid gainsboro;
+}

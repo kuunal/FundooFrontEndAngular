@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginserviceService } from 'src/app/services/login/loginservice.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,10 @@ export class LoginComponent implements OnInit {
   hide:boolean = true;
   myForm: FormGroup;
 
-  constructor(private builder : FormBuilder, private service:LoginserviceService, private router: Router) { }
+  constructor(private builder : FormBuilder
+    , private service:LoginserviceService
+    , private router: Router
+    , private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.myForm = this.builder.group({
@@ -44,7 +48,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', response.id);
         this.router.navigate(['/home']);
       },
-      error=>console.log(error)
+      error=>this.snackBar.open('Error registering! Please try again later.', '', {
+        duration: 2000,
+      })
     );
   }
 

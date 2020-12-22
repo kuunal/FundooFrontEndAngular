@@ -1,8 +1,8 @@
 <form
   class="container"
   [formGroup]="noteForm"
-  tabindex="0"
   (blur)="isFocused = false"
+  tabindex="-1"
   *ngIf="isFocused; else notebar"
 >
   <mat-card>
@@ -51,5 +51,3 @@
 <ng-template #notebar>
   <app-addnotes (click)="isFocused = true"></app-addnotes>
 </ng-template>
-
-{{ isFocused }}

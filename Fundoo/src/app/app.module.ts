@@ -28,6 +28,8 @@ import { PinComponent } from './components/home/buttons/pin/pin.component';
 import { CheckboxComponent } from './components/home/buttons/checkbox/checkbox.component';
 import { EditComponent } from './components/home/buttons/edit/edit.component';
 import { CloseComponent } from './components/home/buttons/close/close.component';
+import { GetnotesComponent } from './components/home/getnotes/getnotes.component';
+import { NoteComponent } from './components/home/getnotes/note/note.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { CloseComponent } from './components/home/buttons/close/close.component'
     CheckboxComponent,
     EditComponent,
     CloseComponent,
+    GetnotesComponent,
+    NoteComponent,
   ],
   imports: [
     BrowserModule,
