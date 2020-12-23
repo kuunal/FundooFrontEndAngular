@@ -18,10 +18,10 @@ export class NoteComponent implements OnInit {
   ngOnInit(): void {
 }
 
-  changeColor(data){
+  changeColor(color){
     console.log("sadsadsadassd")
-    this._service.setColor(data).subscribe(
-      success=>this.note.color = data.color ,
+    this._service.setColor({ noteIdList: [this.note.id] , color}).subscribe(
+      success=>this.note.color = color ,
       error=> this.snackBar.open('Error changing color!', '', {
         duration: 2000,
       })

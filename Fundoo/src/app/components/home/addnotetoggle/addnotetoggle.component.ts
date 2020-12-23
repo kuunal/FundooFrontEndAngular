@@ -15,7 +15,12 @@ export class AddnotetoggleComponent implements OnInit{
   isFocused : boolean = false;
   isArchieved: boolean = false;
   undo:string[];
+  color:string = "white";
+
   @Output() closeEvent = new EventEmitter(); 
+  colorStyle = {
+    'background-color': "white"
+  }
 
   constructor(private builder : FormBuilder
     , private _service: NotesService
@@ -74,5 +79,11 @@ export class AddnotetoggleComponent implements OnInit{
   close(){
     this.submit()
     this.closeEvent.emit("");
+  }
+
+  changeColor(color){
+    this.noteForm.get('color').setValue(color); 
+    this.colorStyle['background-color'] = color;
+    console.log(this.color)
   }
 }

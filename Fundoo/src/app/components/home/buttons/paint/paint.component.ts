@@ -20,7 +20,7 @@ export class PaintComponent implements OnInit {
 
   getColor(color:string){
     console.log(color)
-    this.colorChanged.emit({ noteIdList: [this.noteId] , color});
+    this.colorChanged.emit(color);
   }
 
 }

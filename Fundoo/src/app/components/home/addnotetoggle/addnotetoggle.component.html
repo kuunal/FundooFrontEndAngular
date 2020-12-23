@@ -4,7 +4,7 @@
   id="add-note-form"
   (ngSubmit)="submit()"
 >
-  <mat-card>
+  <mat-card [ngStyle]="colorStyle">
     <mat-card-title>
       <textarea
         matInput
@@ -15,6 +15,7 @@
         placeholder="Title"
         class="title"
         formControlName="title"
+        [ngStyle]="colorStyle"
       ></textarea>
       <app-pin-component
         (click)="togglePin()"
@@ -31,6 +32,7 @@
         placeholder="Take a note..."
         formControlName="description"
         name="description"
+        [ngStyle]="colorStyle"
         ([ngModel])="(description)"
       ></textarea>
     </mat-card-content>
@@ -38,7 +40,9 @@
       <div class="actions__left">
         <app-remainder-icon-component></app-remainder-icon-component>
         <app-add-collaborator-component></app-add-collaborator-component>
-        <app-paint-component></app-paint-component>
+        <app-paint-component
+          (colorChanged)="changeColor($event)"
+        ></app-paint-component>
         <app-picture-component></app-picture-component>
         <app-archieve-component
           (click)="toggleArchieve()"
