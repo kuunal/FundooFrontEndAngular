@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import {AddnotesComponent} from './addnotes/addnotes.component';
-
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,17 +13,30 @@ export class HomeComponent implements OnInit {
   @Input() isMenuClicked:boolean;
   isFocused: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router
+    , private route: ActivatedRoute) { }
  
   ngOnInit(): void {
   }
 
-  @HostListener('click',['$event']) onClick(event) {
-    if (this.isFocused && !document.getElementById('add-note-form').contains(event.target)){
-      this.isFocused = !this.isFocused;        
-    }else if (this.isFocused === false && document.getElementById('mini-add-note').contains(event.target)){
-      this.isFocused = !this.isFocused;
-    } 
+//   @HostListener('click',['$event']) onClick(event) {
+//     if (this.isFocused && !document.getElementById('add-note-form').contains(event.target)){
+//       this.isFocused = !this.isFocused;        
+//     }else if (this.isFocused === false && document.getElementById('mini-add-note').contains(event.target)){
+//       this.isFocused = !this.isFocused;
+//     } 
+// }
+
+changeRoute(route){
+  console.log(route)
+  switch(route){
+    case "archive":
+      this.router.navigate([route], {relativeTo : this.route})
+      break;
+      case "notes":
+    default:
+      this.router.navigate([route], {relativeTo : this.route})
+  }
 }
 
 }

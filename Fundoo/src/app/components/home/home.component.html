@@ -3,14 +3,19 @@
     (sidebarClickedEvent)="isSidebarClicked = $event"
     (menuClickedEvent)="isMenuClicked = $event"
   ></app-home-navbar>
-  <app-sidnav [isSidebarClicked]="isSidebarClicked"></app-sidnav>
+  <app-sidnav
+    [isSidebarClicked]="isSidebarClicked"
+    (route)="changeRoute($event)"
+  ></app-sidnav>
   <app-menu [isMenuClicked]="isMenuClicked"></app-menu>
-  <app-addnotetoggle
+  <!-- <app-addnotetoggle
     *ngIf="isFocused; else notebar"
     (closeEvent)="isFocused = !isFocused"
   ></app-addnotetoggle>
   <app-getnotes></app-getnotes>
   <ng-template #notebar>
     <app-addnotes></app-addnotes>
-  </ng-template>
+  </ng-template> -->
+
+  <router-outlet></router-outlet>
 </div>

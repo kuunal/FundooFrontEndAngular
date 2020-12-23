@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidnav',
@@ -9,6 +9,7 @@ export class SidnavComponent implements OnInit {
 
   isOpen:boolean;
   @Input() isSidebarClicked:boolean;
+  @Output() route = new EventEmitter();
   sidebarHoverClass:string = "sidebar-hover";
   sidebarClass:string = "sidebar";
 
@@ -20,10 +21,10 @@ export class SidnavComponent implements OnInit {
     }
 
     notesClicked(){
-      console.log("clicked")
+      this.route.emit("notes"); 
     }
 
-    logout(){
-      localStorage.clear();
+    archiveClicked(){
+      this.route.emit("archive"); 
     }
 }

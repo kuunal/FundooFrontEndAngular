@@ -32,6 +32,8 @@ import { GetnotesComponent } from './components/home/getnotes/getnotes.component
 import { NoteComponent } from './components/home/getnotes/note/note.component';
 import { AddLabelComponent } from './components/home/buttons/add-label/add-label.component';
 import { PictureAddNoteComponent } from './components/home/buttons/picture/picture-add-note.component';
+import { NotesComponent } from './components/home/notes/notes.component';
+import { ArchiveComponent } from './components/home/archive/archive.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { PictureAddNoteComponent } from './components/home/buttons/picture/pictu
     GetnotesComponent,
     NoteComponent,
     AddLabelComponent,
-    PictureAddNoteComponent
+    PictureAddNoteComponent,
+    NotesComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule,
