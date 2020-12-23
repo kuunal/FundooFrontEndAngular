@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-paint-component',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaintComponent implements OnInit {
 
+  @Input() noteId; 
+  @Output() colorChanged:any = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -14,6 +16,11 @@ export class PaintComponent implements OnInit {
 
   open(trigger){
     trigger.openMenu();
+  }
+
+  getColor(color:string){
+    console.log(color)
+    this.colorChanged.emit({ noteIdList: [this.noteId] , color});
   }
 
 }

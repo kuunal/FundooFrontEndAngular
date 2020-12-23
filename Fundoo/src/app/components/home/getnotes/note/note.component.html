@@ -1,5 +1,5 @@
 <div (mouseenter)="isFocused = true" (mouseleave)="isFocused = false">
-  <mat-card>
+  <mat-card [style.background-color]="note.color">
     <mat-card-title>
       <span>
         {{ note.title }}
@@ -15,7 +15,10 @@
     <mat-card-actions [style.opacity]="!isFocused ? '0' : '1'">
       <app-remainder-icon-component></app-remainder-icon-component>
       <app-add-collaborator-component></app-add-collaborator-component>
-      <app-paint-component></app-paint-component>
+      <app-paint-component
+        [noteId]="note.id"
+        (colorChanged)="changeColor($event)"
+      ></app-paint-component>
       <app-picture-component></app-picture-component>
       <app-archieve-component></app-archieve-component>
       <app-more-component [noteId]="note.id"></app-more-component>

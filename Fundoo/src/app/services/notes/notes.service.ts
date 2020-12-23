@@ -13,6 +13,7 @@ export class NotesService {
   getUri = environment.backendUri + '/notes/getNotesList'
   unPinUri = environment.backendUri + 'notes/pinUnpinNotes';
   deleteUri = environment.backendUri + '/notes/trashNotes';
+  changeColorUri = `${environment.backendUri}notes/changesColorNotes`;
   private _refresh$ = new Subject<void>();
 
 
@@ -51,5 +52,9 @@ export class NotesService {
     );
   }
 
+  setColor(data) {
+    return this.http
+    .post(data,this.changeColorUri);
+  }
 }
 

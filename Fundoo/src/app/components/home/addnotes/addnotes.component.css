@@ -1,18 +1,17 @@
 .container {
   padding: 2em;
   margin-left: 25%;
-  width: 100%;
+  /* width: 100%; */
 }
 
 mat-card {
   box-shadow: 1px 1px 5px 1px gainsboro !important;
   padding: 0;
-  width: 50vw;
+  width: 60vw;
   padding: 0.1em;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
-  /* flex-wrap: wrap; */
 }
 
 .icons {
@@ -61,7 +60,11 @@ app-picture-add-note-component {
 }
 
 @media (max-width: 600px) {
+  .container {
+    padding-left: 0;
+  }
   mat-card {
-    width: 100%;
+    min-width: 300px;
+    /* width: 100%; */
   }
 }

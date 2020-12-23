@@ -87,3 +87,16 @@ img {
   width: 18px;
   height: 18px;
 }
+
+@media (max-width: 800px) {
+  mat-card-actions {
+    padding: 0px;
+  }
+  mat-card {
+    min-width: 300px;
+  }
+
+  .container {
+    padding-left: 0;
+  }
+}

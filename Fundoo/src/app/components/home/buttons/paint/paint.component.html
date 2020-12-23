@@ -7,6 +7,70 @@
   </mat-icon>
 </button>
 <mat-menu #menu="matMenu" yPosition="above">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
+  <div class="menu__row">
+    <span
+      mat-menu-item
+      class="color-one color"
+      (click)="getColor('#ffffff')"
+    ></span>
+    <span
+      mat-menu-item
+      class="color-two color"
+      (click)="getColor('#F28B82')"
+    ></span>
+    <span
+      mat-menu-item
+      class="color-three color"
+      (click)="getColor('#FBBC04')"
+    ></span>
+    <span
+      mat-menu-item
+      class="color-four color"
+      (click)="getColor('#FFF475')"
+    ></span>
+  </div>
+  <div class="menu__row">
+    <span
+      mat-menu-item
+      class="color-five color"
+      (click)="getColor('#CCFF90')"
+    ></span>
+    <span
+      mat-menu-item
+      class="color-six color"
+      (click)="getColor('#A7FFEB')"
+    ></span>
+    <span
+      mat-menu-item
+      class="color-seven color"
+      (click)="getColor('#CBF0F8')"
+    ></span>
+    <span
+      mat-menu-item
+      class="color-eight color"
+      (click)="getColor('#AECBFA')"
+    ></span>
+  </div>
+  <div class="menu__row">
+    <span
+      mat-menu-item
+      class="color-nine color"
+      (click)="getColor('#D7AEFB')"
+    ></span>
+    <span
+      mat-menu-item
+      class="color-ten color"
+      (click)="getColor('#FDCFE8')"
+    ></span>
+    <span
+      mat-menu-item
+      class="color-eleven color"
+      (click)="getColor('#E6C9A8')"
+    ></span>
+    <span
+      mat-menu-item
+      class="color-twelve color"
+      (click)="getColor('#E8EAED')"
+    ></span>
+  </div>
 </mat-menu>

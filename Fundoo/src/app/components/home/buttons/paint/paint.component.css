@@ -1,0 +1,77 @@
+span {
+  border-radius: 50%;
+  margin: 2px;
+  border: 2px solid white;
+}
+
+.first-row {
+  display: flex;
+}
+
+.menu__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+span:hover {
+  border: 2px solid black;
+}
+
+.color {
+  height: 20px;
+}
+
+.color-one {
+}
+
+.color-two {
+  background-color: #f28b82;
+}
+
+.color-three {
+  background-color: #fbbc04;
+}
+
+.color-four {
+  background-color: #fff475;
+}
+
+.color-five {
+  background-color: #ccff90;
+}
+
+.color-six {
+  background-color: #a7ffeb;
+}
+
+.color-seven {
+  background-color: #cbf0f8;
+}
+
+.color-eight {
+  background-color: #aecbfa;
+}
+
+.color-nine {
+  background-color: #d7aefb;
+}
+
+.color-ten {
+  background-color: #fdcfe8;
+}
+
+.color-eleven {
+  background-color: #e6c9a8;
+}
+
+.color-twelve {
+  background-color: #e8eaed;
+}
+
+/deep/ .mat-menu-content:not(:empty) {
+  padding: 4px !important;
+}
+
+/deep/ .mat-nav-list .mat-list-item .mat-list-item-ripple {
+  visibility: hidden !important;
+}

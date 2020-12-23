@@ -8,7 +8,9 @@ import { RegistrationComponent } from './components/registration/registration.co
 const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'register', component: RegistrationComponent},
-  {path:'', component: HomeComponent, canActivate:[AuthGuard]},
+  {path:'', component: HomeComponent
+  , canActivate:[AuthGuard]
+  }
 ];
 
 @NgModule({

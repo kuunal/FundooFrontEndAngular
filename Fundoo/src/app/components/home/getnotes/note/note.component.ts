@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from 'src/app/services/notes/notes.service';
 
@@ -16,8 +16,17 @@ export class NoteComponent implements OnInit {
     ,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-  }
+}
 
+  changeColor(data){
+    console.log("sadsadsadassd")
+    this._service.setColor(data).subscribe(
+      success=> data.noteIdList.filter(id=>this.note.id == id) ?  this.note.color = data.color :{},
+      error=> this.snackBar.open('Error changing color!', '', {
+        duration: 2000,
+      })
+    )
+  }
 
   togglePin(){
     this._service.togglePin({isPined: !this.note.isPined, noteIdList:[this.note.id]})
@@ -28,6 +37,11 @@ export class NoteComponent implements OnInit {
       })
     ) 
 
+  }
+
+  getColor(updatedColor:string){
+    this.color=updatedColor;
+    console.log(updatedColor)
   }
 
 }
