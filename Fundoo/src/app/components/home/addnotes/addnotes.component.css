@@ -1,6 +1,7 @@
 .container {
   padding: 2em;
   margin-left: 25%;
+  width: 100%;
 }
 
 mat-card {
@@ -10,7 +11,12 @@ mat-card {
   padding: 0.1em;
   border-radius: 8px;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
+}
+
+.icons {
+  display: flex;
 }
 
 input {
@@ -52,4 +58,10 @@ img {
 
 app-picture-add-note-component {
   opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+  mat-card {
+    width: 100%;
+  }
 }
