@@ -1,4 +1,5 @@
-import { Component, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from 'src/app/services/notes/notes.service';
@@ -14,6 +15,7 @@ export class AddnotetoggleComponent implements OnInit{
   isFocused : boolean = false;
   isArchieved: boolean = false;
   undo:string[];
+  @Output() closeEvent = new EventEmitter(); 
 
   constructor(private builder : FormBuilder
     , private _service: NotesService
@@ -67,5 +69,10 @@ export class AddnotetoggleComponent implements OnInit{
   toggleArchieve(){
     this.isArchieved = !this.isArchieved;
     this.noteForm.get('isArchived').setValue(this.isArchieved); 
+  }
+
+  close(){
+    this.submit()
+    this.closeEvent.emit("");
   }
 }
