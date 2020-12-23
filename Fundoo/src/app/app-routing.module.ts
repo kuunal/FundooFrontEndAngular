@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { ArchiveComponent } from './components/home/archive/archive.component';
+import { ArchivedNotesComponent } from './components/home/archived-notes/archived-notes.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotesComponent } from './components/home/notes/notes.component';
 import { LoginComponent } from './components/login/login.component';
@@ -14,7 +14,7 @@ const routes: Routes = [
   , canActivate:[AuthGuard],
   children:[
     {path:'notes', component:NotesComponent},
-    {path: 'archive', component: ArchiveComponent}
+    {path: 'archive', component: ArchivedNotesComponent}
   ]
   }
 ];

@@ -33,7 +33,7 @@ import { NoteComponent } from './components/home/getnotes/note/note.component';
 import { AddLabelComponent } from './components/home/buttons/add-label/add-label.component';
 import { PictureAddNoteComponent } from './components/home/buttons/picture/picture-add-note.component';
 import { NotesComponent } from './components/home/notes/notes.component';
-import { ArchiveComponent } from './components/home/archive/archive.component';
+import { ArchivedNotesComponent } from './components/home/archived-notes/archived-notes.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,7 @@ import { ArchiveComponent } from './components/home/archive/archive.component';
     AddLabelComponent,
     PictureAddNoteComponent,
     NotesComponent,
-    ArchiveComponent
+    ArchivedNotesComponent
   ],
   imports: [
     BrowserModule,
