@@ -53,10 +53,18 @@ textarea {
 }
 
 mat-card-actions {
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.actions__left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.8;
   flex-wrap: wrap;
 }
 
@@ -68,7 +76,13 @@ mat-card-actions:last-child {
   background-color: transparent !important;
 } */
 
-.mat-icon-button,
+.mat-icon-button {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1;
+}
+
 img {
   width: 18px;
   height: 18px;

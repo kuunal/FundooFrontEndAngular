@@ -22,7 +22,8 @@ export class GetnotesComponent implements OnInit {
   private getNotes(){
     this._service.getNote().subscribe(
       response=>{this.notes = response.data
-        .data.sort((note, nextNote)=>note.isPined - nextNote.isPined).filter(note=>note.isDeleted!=true)
+        .data.sort((note, nextNote)=>note.isPined - nextNote.isPined)
+        .filter(note=>note.isDeleted!=true && note.isArchived!=true)
         .reverse()
         console.log(this.notes)
       },

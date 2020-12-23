@@ -12,4 +12,8 @@ export class PaintComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  open(trigger){
+    trigger.openMenu();
+  }
+
 }

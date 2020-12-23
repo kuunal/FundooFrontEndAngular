@@ -40,7 +40,10 @@
         <app-add-collaborator-component></app-add-collaborator-component>
         <app-paint-component></app-paint-component>
         <app-picture-component></app-picture-component>
-        <app-archieve-component></app-archieve-component>
+        <app-archieve-component
+          (click)="toggleArchieve()"
+          [isArchived]="isArchieved"
+        ></app-archieve-component>
         <app-more-component></app-more-component>
         <app-undo-component (click)="undoAction()"></app-undo-component>
         <app-redo-component></app-redo-component>

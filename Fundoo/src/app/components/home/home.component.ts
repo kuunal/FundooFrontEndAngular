@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   }
 
   @HostListener('click',['$event']) onClick(event) {
-    var target = event.target || event.srcElement || event.currentTarget;
     if (this.isFocused && !document.getElementById('add-note-form').contains(event.target)){
       this.isFocused = !this.isFocused;        
     }else if (this.isFocused === false && document.getElementById('mini-add-note').contains(event.target)){

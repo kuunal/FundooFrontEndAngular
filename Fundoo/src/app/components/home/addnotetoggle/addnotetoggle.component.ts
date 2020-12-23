@@ -1,4 +1,4 @@
-import { Component, HostListener, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from 'src/app/services/notes/notes.service';
@@ -12,7 +12,9 @@ export class AddnotetoggleComponent implements OnInit{
 
   noteForm: FormGroup;
   isFocused : boolean = false;
+  isArchieved: boolean = false;
   undo:string[];
+
   constructor(private builder : FormBuilder
     , private _service: NotesService
     , private snackBar: MatSnackBar) { }
@@ -60,5 +62,10 @@ export class AddnotetoggleComponent implements OnInit{
         duration: 2000,
       })
     );
+  }
+
+  toggleArchieve(){
+    this.isArchieved = !this.isArchieved;
+    this.noteForm.get('isArchived').setValue(this.isArchieved); 
   }
 }

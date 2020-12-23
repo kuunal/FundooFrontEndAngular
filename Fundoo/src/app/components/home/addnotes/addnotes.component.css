@@ -9,6 +9,8 @@ mat-card {
   width: 50vw;
   padding: 0.1em;
   border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 input {

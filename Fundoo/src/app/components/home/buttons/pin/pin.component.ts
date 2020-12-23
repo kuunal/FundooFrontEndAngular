@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-pin-component',
@@ -7,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PinComponent implements OnInit {
 
-  @Input() isPined:boolean;
+
+  @Input() isPined:boolean = false;
   constructor() { }
 
   ngOnInit(): void {
