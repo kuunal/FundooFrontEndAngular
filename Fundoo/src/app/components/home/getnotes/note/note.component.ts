@@ -18,8 +18,14 @@ export class NoteComponent implements OnInit {
   ngOnInit(): void {
 }
 
-  changeColor(color){
-    this.note.color = color;    
+  changeColor(data){
+    console.log("sadsadsadassd")
+    this._service.setColor(data).subscribe(
+      success=>this.note.color = data.color ,
+      error=> this.snackBar.open('Error changing color!', '', {
+        duration: 2000,
+      })
+    )
   }
 
   togglePin(){
@@ -31,11 +37,6 @@ export class NoteComponent implements OnInit {
       })
     ) 
 
-  }
-
-  getColor(updatedColor:string){
-    this.color=updatedColor;
-    console.log(updatedColor)
   }
 
 }
