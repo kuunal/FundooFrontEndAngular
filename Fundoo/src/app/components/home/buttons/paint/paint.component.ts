@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
   selector: 'app-paint-component',
@@ -9,7 +11,8 @@ export class PaintComponent implements OnInit {
 
   @Input() noteId; 
   @Output() colorChanged:any = new EventEmitter();
-  constructor() { }
+  constructor(private _service: NotesService
+    , private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +23,12 @@ export class PaintComponent implements OnInit {
 
   getColor(color:string){
     console.log(color)
-    this.colorChanged.emit({ noteIdList: [this.noteId] , color});
+    this._service.setColor({ noteIdList: [this.noteId] , color}).subscribe(
+      success=> this.colorChanged.emit(color),
+      error=> this.snackBar.open('Error changing color!', '', {
+        duration: 2000,
+      })
+    )
   }
 
 }
