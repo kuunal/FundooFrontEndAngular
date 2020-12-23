@@ -19,7 +19,10 @@
         (colorChanged)="changeColor($event)"
       ></app-paint-component>
       <app-picture-component></app-picture-component>
-      <app-archieve-component></app-archieve-component>
+      <app-archieve-component
+        (click)="toggleArchive()"
+        [isArchived]="note.isArchived"
+      ></app-archieve-component>
       <app-more-component [noteId]="note.id"></app-more-component>
     </mat-card-actions>
   </mat-card>

@@ -14,6 +14,8 @@ export class NotesService {
   unPinUri = environment.backendUri + 'notes/pinUnpinNotes';
   deleteUri = environment.backendUri + '/notes/trashNotes';
   changeColorUri = `${environment.backendUri}notes/changesColorNotes`;
+  archiveUri = `${environment.backendUri}notes/archiveNotes`
+
   private _refresh$ = new Subject<void>();
 
 
@@ -55,6 +57,14 @@ export class NotesService {
   setColor(data) {
     return this.http
     .post(data,this.changeColorUri);
+  }
+
+  toggleArchive(data){
+    return this.http.post(data, this.archiveUri).pipe(
+      tap(()=>{
+        this._refresh$.next();
+      })
+      );
   }
 }
 

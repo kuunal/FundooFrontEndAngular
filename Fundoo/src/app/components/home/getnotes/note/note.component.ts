@@ -39,4 +39,14 @@ export class NoteComponent implements OnInit {
 
   }
 
+  toggleArchive(){
+    this._service.toggleArchive({isArchived: !this.note.isPined, noteIdList:[this.note.id]})
+    .subscribe(
+      response=>{},
+      error=> this.snackBar.open('Error unpinning!', '', {
+        duration: 2000,
+      })
+    )
+  }
+
 }
