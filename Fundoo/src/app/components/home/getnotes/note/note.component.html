@@ -13,16 +13,23 @@
       {{ note.description }}
     </mat-card-content>
     <mat-card-actions [style.opacity]="!isFocused ? '0' : '1'">
-      <app-remainder-icon-component></app-remainder-icon-component>
-      <app-add-collaborator-component></app-add-collaborator-component>
-      <app-paint-component
-        (colorChanged)="changeColor($event)"
-      ></app-paint-component>
-      <app-picture-component></app-picture-component>
-      <app-archieve-component
-        (click)="toggleArchive()"
-        [isArchived]="note.isArchived"
-      ></app-archieve-component>
+      <ng-template *ngIf="!note.isDeleted; else deleteBlock">
+        <app-remainder-icon-component></app-remainder-icon-component>
+        <app-add-collaborator-component></app-add-collaborator-component>
+        <app-paint-component
+          (colorChanged)="changeColor($event)"
+        ></app-paint-component>
+        <app-picture-component></app-picture-component>
+        <app-archieve-component
+          (click)="toggleArchive()"
+          [isArchived]="note.isArchived"
+        >
+        </app-archieve-component>
+      </ng-template>
+      <ng-template #deleteBlock>
+        <app-trash-component></app-trash-component>
+        <app-recover-component></app-recover-component>
+      </ng-template>
       <app-more-component [noteId]="note.id"></app-more-component>
     </mat-card-actions>
   </mat-card>
