@@ -8,15 +8,12 @@ import { EventEmitter } from '@angular/core';
 })
 export class CloseComponent implements OnInit {
 
-  @Output() closeEvent = new EventEmitter(); 
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  close(){
-    this.closeEvent.emit("");
-  }
+
 
 }

@@ -37,6 +37,8 @@ import { ArchivedNotesComponent } from './components/home/archived-notes/archive
 import { DeleteComponent } from './components/home/delete/delete.component';
 import { TrashComponent } from './components/home/buttons/trash/trash.component';
 import { RecoverComponent } from './components/home/buttons/recover/recover.component';
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,11 @@ import { RecoverComponent } from './components/home/buttons/recover/recover.comp
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMatDatetimePickerModule, 
+    NgxMatTimepickerModule,
+    MatDatepickerModule,
+    NgxMatNativeDateModule
   ],
   providers: [AuthGuard, {
     provide: HTTP_INTERCEPTORS,

@@ -15,6 +15,7 @@ export class NotesService {
   deleteUri = environment.backendUri + '/notes/trashNotes';
   changeColorUri = `${environment.backendUri}notes/changesColorNotes`;
   archiveUri = `${environment.backendUri}notes/archiveNotes`
+  updateDateUri = `${environment.backendUri}notes/addUpdateReminderNotes`;
 
   private _refresh$ = new Subject<void>();
 
@@ -66,5 +67,14 @@ export class NotesService {
       })
       );
   }
+
+  updateDate(date){
+    return this.http.post(date, this.updateDateUri).pipe(
+      tap(()=>{
+        this._refresh$.next();
+      })
+      );
+  }
+
 }
 

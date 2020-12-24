@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-remainder-icon-component',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RemainderIconComponent implements OnInit {
 
+  date;
+  @Output() dateEvent = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  submit(){
+    this.dateEvent.emit(this.date);
   }
 
 }

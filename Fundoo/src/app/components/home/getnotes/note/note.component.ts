@@ -43,7 +43,17 @@ export class NoteComponent implements OnInit {
     this._service.toggleArchive({isArchived: !this.note.isPined, noteIdList:[this.note.id]})
     .subscribe(
       response=>{},
-      error=> this.snackBar.open('Error unpinning!', '', {
+      error=> this.snackBar.open('Error!', '', {
+        duration: 2000,
+      })
+    )
+  }
+
+  changeDate(date){
+    this._service.updateDate({reminder: date, noteIdList:[this.note.id]})
+    .subscribe(
+      response=>{},
+      error=> this.snackBar.open('Error!', '', {
         duration: 2000,
       })
     )

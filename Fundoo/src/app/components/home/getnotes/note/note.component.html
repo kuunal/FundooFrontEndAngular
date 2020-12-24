@@ -13,8 +13,10 @@
       {{ note.description }}
     </mat-card-content>
     <mat-card-actions [style.opacity]="!isFocused ? '0' : '1'">
-      <ng-template *ngIf="!note.isDeleted; else deleteBlock">
-        <app-remainder-icon-component></app-remainder-icon-component>
+      <ng-container *ngIf="!note.isDeleted; else deleteBlock">
+        <app-remainder-icon-component
+          (dateEvent)="changeDate($event)"
+        ></app-remainder-icon-component>
         <app-add-collaborator-component></app-add-collaborator-component>
         <app-paint-component
           (colorChanged)="changeColor($event)"
@@ -25,7 +27,7 @@
           [isArchived]="note.isArchived"
         >
         </app-archieve-component>
-      </ng-template>
+      </ng-container>
       <ng-template #deleteBlock>
         <app-trash-component></app-trash-component>
         <app-recover-component></app-recover-component>
