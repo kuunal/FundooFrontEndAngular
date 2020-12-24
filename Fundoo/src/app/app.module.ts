@@ -34,6 +34,9 @@ import { AddLabelComponent } from './components/home/buttons/add-label/add-label
 import { PictureAddNoteComponent } from './components/home/buttons/picture/picture-add-note.component';
 import { NotesComponent } from './components/home/notes/notes.component';
 import { ArchivedNotesComponent } from './components/home/archived-notes/archived-notes.component';
+import { DeleteComponent } from './components/home/delete/delete.component';
+import { TrashComponent } from './components/home/buttons/trash/trash.component';
+import { RecoverComponent } from './components/home/buttons/recover/recover.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { ArchivedNotesComponent } from './components/home/archived-notes/archive
     AddLabelComponent,
     PictureAddNoteComponent,
     NotesComponent,
-    ArchivedNotesComponent
+    ArchivedNotesComponent,
+    DeleteComponent,
+    TrashComponent,
+    RecoverComponent,
   ],
   imports: [
     BrowserModule,

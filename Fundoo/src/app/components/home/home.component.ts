@@ -11,7 +11,6 @@ export class HomeComponent implements OnInit {
 
   @Input() isSidebarClicked:boolean;
   @Input() isMenuClicked:boolean;
-  isFocused: boolean = false;
 
   constructor(private router: Router
     , private route: ActivatedRoute) { }
@@ -19,13 +18,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-//   @HostListener('click',['$event']) onClick(event) {
-//     if (this.isFocused && !document.getElementById('add-note-form').contains(event.target)){
-//       this.isFocused = !this.isFocused;        
-//     }else if (this.isFocused === false && document.getElementById('mini-add-note').contains(event.target)){
-//       this.isFocused = !this.isFocused;
-//     } 
-// }
 
 changeRoute(route){
   console.log(route)
@@ -33,6 +25,8 @@ changeRoute(route){
     case "archive":
       this.router.navigate([route], {relativeTo : this.route})
       break;
+    case "delete":
+      this.router.navigate([route], {relativeTo : this.route})
       case "notes":
     default:
       this.router.navigate([route], {relativeTo : this.route})

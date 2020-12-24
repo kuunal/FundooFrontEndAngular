@@ -8,6 +8,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class NotesComponent implements OnInit {
 
   isFocused: boolean = false;
+  notesFilter = function(note){
+    return note.isDeleted!=true && note.isArchived!=true
+  }
+
   constructor() { }
 
   ngOnInit(): void {

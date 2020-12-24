@@ -27,4 +27,9 @@ export class SidnavComponent implements OnInit {
     archiveClicked(){
       this.route.emit("archive"); 
     }
+
+    delete(){
+      this.route.emit("delete"); 
+    }
+
 }

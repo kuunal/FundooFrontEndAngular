@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from 'src/app/services/notes/notes.service';
 
@@ -9,6 +9,8 @@ import { NotesService } from 'src/app/services/notes/notes.service';
 })
 export class GetnotesComponent implements OnInit {
 
+  @Input() componentIsDelete: boolean;
+  @Input() filter: Function;
   notes:[];
 
   constructor(private _service: NotesService, private snackBar: MatSnackBar) { }
@@ -23,9 +25,10 @@ export class GetnotesComponent implements OnInit {
     this._service.getNote().subscribe(
       response=>{this.notes = response.data
         .data.sort((note, nextNote)=>note.isPined - nextNote.isPined)
-        .filter(note=>note.isDeleted!=true && note.isArchived!=true)
+        .filter(this.filter)
         .reverse()
         console.log(this.notes)
+        console.log(this.filter)
       },
       error=> this.snackBar.open('Error fetching notes!', '', {
         duration: 2000,

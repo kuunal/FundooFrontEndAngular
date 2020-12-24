@@ -2,7 +2,7 @@
   *ngIf="isFocused; else notebar"
   (closeEvent)="isFocused = !isFocused"
 ></app-addnotetoggle>
-<app-getnotes></app-getnotes>
+<app-getnotes [filter]="notesFilter"></app-getnotes>
 <ng-template #notebar>
   <app-addnotes></app-addnotes>
 </ng-template>
