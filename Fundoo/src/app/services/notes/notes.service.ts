@@ -18,7 +18,7 @@ export class NotesService {
   updateDateUri: string= `${environment.backendUri}notes/addUpdateReminderNotes`;
   deletePermanentlyUri: string= `${environment.backendUri}notes/deleteForeverNotes`;
   restoreNoteUri: string= `${environment.backendUri}notes/trashNotes`;
-
+  removeRemainderUri: string= `${environment.backendUri}notes/removeReminderNotes`;
   private _refresh$ = new Subject<void>();
 
 
@@ -88,6 +88,14 @@ export class NotesService {
 
   restoreNote(data){
     return this.http.post(data, this.restoreNoteUri).pipe(
+      tap(()=>{
+        this._refresh$.next();
+      })
+      );
+  }
+
+  removeRemainder(data){
+    return this.http.post(data, this.removeRemainderUri).pipe(
       tap(()=>{
         this._refresh$.next();
       })

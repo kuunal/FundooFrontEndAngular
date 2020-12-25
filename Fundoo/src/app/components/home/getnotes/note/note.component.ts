@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import * as moment from 'moment';
 import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
@@ -11,12 +12,29 @@ export class NoteComponent implements OnInit {
 
   @Input() note:any;
   isFocused: boolean = false;
+  remainderObject:any;
+  isTimeFocused: boolean;
 
   constructor(private _service: NotesService
     ,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-}
+  }
+
+  calculateRemainder(remainder){
+    let momentObject = moment(remainder);
+    let date = new Date();
+
+    if (momentObject.isAfter(moment(date))){
+      this.remainderObject = { isExpired: false, 
+                              remainingTime: momentObject.fromNow(),
+                              data: momentObject.format("MMM Do YY HH:MM:SS")};
+      }
+    else
+      this.remainderObject = { isExpired: true, 
+                              remainingTime: momentObject.fromNow(),
+                              data: momentObject.format("MMM Do YY HH:MM:SS")};
+  }
 
   changeColor(color){
     console.log("sadsadsadassd")
@@ -71,6 +89,18 @@ export class NoteComponent implements OnInit {
 
   recover(){
     this._service.restoreNote({isDeleted: false, noteIdList:[this.note.id]})
+    .subscribe(
+      response=>{},
+      error=> this.snackBar.open('Error!', '', {
+        duration: 2000,
+      })
+    )
+  }
+
+  
+  removeRemainder(){
+    console.log("ASdasd")
+    this._service.removeRemainder({noteIdList:[this.note.id]})
     .subscribe(
       response=>{},
       error=> this.snackBar.open('Error!', '', {
