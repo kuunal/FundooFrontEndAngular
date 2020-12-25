@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { HttpServicesService } from '../http-services.service';
 
 @Injectable({
@@ -7,14 +8,17 @@ import { HttpServicesService } from '../http-services.service';
 })
 export class LoginserviceService {
 
+  registerUri:string = `${environment.backendUri}user/userSignUp`;
+  loginUri:string = `${environment.backendUri}user/login`;
+
   constructor(private http:HttpServicesService) { }
 
-  login(data, uri): Observable<any>{
-    return this.http.post(data, uri);
+  login(data): Observable<any>{
+    return this.http.post(data, this.loginUri);
   }
 
-  register(data, uri): Observable<any>{
-    return this.http.post(data, uri);
+  register(data): Observable<any>{
+    return this.http.post(data, this.registerUri);
   }
 
   loggedIn(){

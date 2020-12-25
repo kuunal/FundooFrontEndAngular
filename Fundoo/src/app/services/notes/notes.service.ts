@@ -19,6 +19,9 @@ export class NotesService {
   deletePermanentlyUri: string= `${environment.backendUri}notes/deleteForeverNotes`;
   restoreNoteUri: string= `${environment.backendUri}notes/trashNotes`;
   removeRemainderUri: string= `${environment.backendUri}notes/removeReminderNotes`;
+  getLabelUri: string= `${environment.backendUri}noteLabels/getNoteLabelList`;
+  addLabelUri: string= `${environment.backendUri}noteLabels`;
+
   private _refresh$ = new Subject<void>();
 
 
@@ -100,6 +103,18 @@ export class NotesService {
         this._refresh$.next();
       })
       );
+  }
+
+  getLabels(): Observable<any>{
+    return this.http.get(this.getLabelUri);
+  }
+
+  addLabel(data){
+    return this.http.post(data, this.addLabelUri).pipe(
+      tap(()=>{
+        this._refresh$.next();
+      })
+    );
   }
 
 }
