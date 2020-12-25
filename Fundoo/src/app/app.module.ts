@@ -39,6 +39,7 @@ import { TrashComponent } from './components/home/buttons/trash/trash.component'
 import { RecoverComponent } from './components/home/buttons/recover/recover.component';
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { RemainderComponent } from './components/home/remainder/remainder.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     DeleteComponent,
     TrashComponent,
     RecoverComponent,
+    RemainderComponent,
   ],
   imports: [
     BrowserModule,

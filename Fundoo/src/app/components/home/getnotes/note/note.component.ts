@@ -99,7 +99,6 @@ export class NoteComponent implements OnInit {
 
   
   removeRemainder(){
-    console.log("ASdasd")
     this._service.removeRemainder({noteIdList:[this.note.id]})
     .subscribe(
       response=>{},
