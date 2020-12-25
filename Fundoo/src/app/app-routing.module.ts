@@ -5,6 +5,7 @@ import { ArchivedNotesComponent } from './components/home/archived-notes/archive
 import { DeleteComponent } from './components/home/delete/delete.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotesComponent } from './components/home/notes/notes.component';
+import { RemainderComponent } from './components/home/remainder/remainder.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   children:[
     {path:'notes', component:NotesComponent},
     {path: 'archive', component: ArchivedNotesComponent},
-    {path: 'delete', component: DeleteComponent}
+    {path: 'delete', component: DeleteComponent},
+    {path: 'remainder', component: RemainderComponent}
   ]
   }
 ];

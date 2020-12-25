@@ -32,4 +32,8 @@ export class SidnavComponent implements OnInit {
       this.route.emit("delete"); 
     }
 
+    remainderClicked(){
+      this.route.emit("remainder"); 
+    }
+
 }

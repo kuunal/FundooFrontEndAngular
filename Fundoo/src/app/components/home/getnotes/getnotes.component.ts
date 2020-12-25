@@ -27,8 +27,6 @@ export class GetnotesComponent implements OnInit {
         .data.sort((note, nextNote)=>note.isPined - nextNote.isPined)
         .filter(this.filter)
         .reverse()
-        console.log(this.notes)
-        console.log(this.filter)
       },
       error=> this.snackBar.open('Error fetching notes!', '', {
         duration: 2000,
