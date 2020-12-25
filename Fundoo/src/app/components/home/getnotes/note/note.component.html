@@ -29,8 +29,10 @@
         </app-archieve-component>
       </ng-container>
       <ng-template #deleteBlock>
-        <app-trash-component></app-trash-component>
-        <app-recover-component></app-recover-component>
+        <app-trash-component
+          (click)="deletePermanently()"
+        ></app-trash-component>
+        <app-recover-component (click)="recover()"></app-recover-component>
       </ng-template>
       <app-more-component [noteId]="note.id"></app-more-component>
     </mat-card-actions>

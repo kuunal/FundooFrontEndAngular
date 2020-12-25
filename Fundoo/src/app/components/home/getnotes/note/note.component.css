@@ -35,7 +35,6 @@ mat-card-actions {
 /deep/ .mat-card-actions > {
   width: 24px;
   height: 24px;
-  /* margin-bottom: 2%; */
 }
 
 div {

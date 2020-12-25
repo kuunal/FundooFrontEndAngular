@@ -59,4 +59,24 @@ export class NoteComponent implements OnInit {
     )
   }
 
+  deletePermanently(){
+    this._service.deleteNotesPermanent({noteIdList:[this.note.id]})
+    .subscribe(
+      response=>{},
+      error=> this.snackBar.open('Error!', '', {
+        duration: 2000,
+      })
+    )
+  }
+
+  recover(){
+    this._service.restoreNote({isDeleted: false, noteIdList:[this.note.id]})
+    .subscribe(
+      response=>{},
+      error=> this.snackBar.open('Error!', '', {
+        duration: 2000,
+      })
+    )
+  }
+
 }
