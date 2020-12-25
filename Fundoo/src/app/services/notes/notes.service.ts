@@ -9,13 +9,15 @@ import { tap } from 'rxjs/operators';
 })
 export class NotesService {
 
-  addUri = environment.backendUri + 'notes/addNotes'
-  getUri = environment.backendUri + '/notes/getNotesList'
-  unPinUri = environment.backendUri + 'notes/pinUnpinNotes';
-  deleteUri = environment.backendUri + '/notes/trashNotes';
-  changeColorUri = `${environment.backendUri}notes/changesColorNotes`;
-  archiveUri = `${environment.backendUri}notes/archiveNotes`
-  updateDateUri = `${environment.backendUri}notes/addUpdateReminderNotes`;
+  addUri: string= environment.backendUri + 'notes/addNotes'
+  getUri: string= environment.backendUri + '/notes/getNotesList'
+  unPinUri: string= environment.backendUri + 'notes/pinUnpinNotes';
+  deleteUri: string= environment.backendUri + '/notes/trashNotes';
+  changeColorUri: string = `${environment.backendUri}notes/changesColorNotes`;
+  archiveUri: string= `${environment.backendUri}notes/archiveNotes`
+  updateDateUri: string= `${environment.backendUri}notes/addUpdateReminderNotes`;
+  deletePermanentlyUri: string= `${environment.backendUri}notes/deleteForeverNotes`;
+  restoreNoteUri: string= `${environment.backendUri}notes/trashNotes`;
 
   private _refresh$ = new Subject<void>();
 
@@ -70,6 +72,22 @@ export class NotesService {
 
   updateDate(date){
     return this.http.post(date, this.updateDateUri).pipe(
+      tap(()=>{
+        this._refresh$.next();
+      })
+      );
+  }
+
+  deleteNotesPermanent(data){
+    return this.http.post(data, this.deletePermanentlyUri).pipe(
+      tap(()=>{
+        this._refresh$.next();
+      })
+      );
+  }
+
+  restoreNote(data){
+    return this.http.post(data, this.restoreNoteUri).pipe(
       tap(()=>{
         this._refresh$.next();
       })

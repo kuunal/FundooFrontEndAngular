@@ -91,12 +91,23 @@ img {
 @media (max-width: 800px) {
   mat-card-actions {
     padding: 0px;
+    align-items: center;
   }
   mat-card {
     min-width: 300px;
   }
 
+  .mat-icon-button {
+    width: 30px;
+  }
+
   .container {
     padding-left: 0;
+    margin-left: 5%;
+    width: 100%;
+  }
+  mat-card {
+    min-width: 300px;
+    width: 100%;
   }
 }
