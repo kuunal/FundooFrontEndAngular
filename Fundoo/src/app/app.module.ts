@@ -41,6 +41,7 @@ import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerMod
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RemainderComponent } from './components/home/remainder/remainder.component';
 import { AddNoteBodyComponent } from './components/home/add-note-body/add-note-body.component';
+import { LabelsComponent } from './components/home/labels/labels.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { AddNoteBodyComponent } from './components/home/add-note-body/add-note-b
     RecoverComponent,
     RemainderComponent,
     AddNoteBodyComponent,
+    LabelsComponent,
   ],
   imports: [
     BrowserModule,

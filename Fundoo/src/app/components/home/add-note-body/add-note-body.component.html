@@ -1,5 +1,4 @@
-<span>{{ note.description }}</span>
-<div *ngFor="let remainder of note.reminder">
+<div *ngFor="let remainder of remainders">
   {{ calculateRemainder(remainder) }}
   <span
     class="remainder"

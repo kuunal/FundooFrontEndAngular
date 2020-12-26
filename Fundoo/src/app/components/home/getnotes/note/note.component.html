@@ -10,8 +10,9 @@
       ></app-pin-component>
     </mat-card-title>
     <mat-card-content>
+      <span>{{ note.description }}</span>
       <app-add-note-body
-        [note]="note"
+        [remainders]="note.reminder"
         (removeRemainderEvent)="removeRemainder()"
       ></app-add-note-body>
     </mat-card-content>

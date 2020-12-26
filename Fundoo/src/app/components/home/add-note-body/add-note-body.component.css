@@ -13,13 +13,14 @@
 mat-icon {
   height: 18px;
   font-size: 14px;
-  padding-right: 2px;
+  padding: 0%;
 }
 
 button {
   border: none;
   outline: none;
   cursor: pointer;
+  background: none;
   padding: 0;
   height: 50%;
 }

@@ -56,6 +56,9 @@ export class AddnotetoggleComponent implements OnInit{
     return this.noteForm.get('description').value;
   }
 
+  get reminder(){
+    return [this.noteForm.get('reminder').value];
+  }
 
   togglePin(){
     this.noteForm.get('isPined').setValue(!this.isPined); 

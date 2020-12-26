@@ -7,7 +7,7 @@ import * as moment from 'moment';
   styleUrls: ['./add-note-body.component.css']
 })
 export class AddNoteBodyComponent implements OnInit {
-  @Input() note;
+  @Input() remainders;
   remainderObject: any;
   isTimeFocused: boolean;
   @Output() removeRemainderEvent = new EventEmitter();
