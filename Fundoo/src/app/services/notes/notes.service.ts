@@ -26,6 +26,9 @@ export class NotesService {
   private _refresh$ = new Subject<void>();
   private _refreshLabels$ = new Subject<void>();
 
+  addLabelToNoteUri(noteId, labelId): string{
+    return `${environment.backendUri}notes/${noteId}/addLabelToNotes/${labelId}/add`; 
+  }
 
   getRefreshedData(){
     return this._refresh$;
@@ -117,6 +120,15 @@ export class NotesService {
 
   addLabel(data){
     return this.http.post(data, this.addLabelUri).pipe(
+      tap(()=>{
+        this._refreshLabels$.next();
+        this._refresh$.next();
+      })
+    );
+  }
+
+  addLabelToNote(data, noteId, labelId){
+    return this.http.post(data, this.addLabelToNoteUri(noteId, labelId)).pipe(
       tap(()=>{
         this._refreshLabels$.next();
         this._refresh$.next();

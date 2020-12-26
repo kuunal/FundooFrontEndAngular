@@ -66,7 +66,12 @@ export class MoreComponent implements OnInit {
   }
 
   addLabelToNote(label){
-    alert(label.label)
+    this._service.addLabelToNote({}, this.note.id, label.id).subscribe(
+      response=>{},
+      error=>this.snackBar.open('Error!', '', {
+        duration: 2000,
+      })
+    )
   }
 
   addLabel(){
