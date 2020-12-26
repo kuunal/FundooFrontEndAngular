@@ -76,7 +76,7 @@ export class RegistrationComponent implements OnInit {
     let data = this.myForm.value;
     data.cartId = "5fdef64cd5d3de001e5d843a";
     data.service = "advance";
-    this.service.register(data, `${this.backendUri}user/userSignUp`).subscribe(
+    this.service.register(data).subscribe(
       response=>this.router.navigate(["/login"]),
       error=>this.snackBar.open('User already exists',``, {
         duration: 2000,

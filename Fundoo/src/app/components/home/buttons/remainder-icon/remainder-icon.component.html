@@ -17,6 +17,7 @@
         [disabled]="false"
         [(ngModel)]="date"
         (dateChange)="submit()"
+        [min]="minDate"
       />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <ngx-mat-datetime-picker #picker> </ngx-mat-datetime-picker>

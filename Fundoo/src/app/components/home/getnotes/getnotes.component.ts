@@ -12,13 +12,14 @@ export class GetnotesComponent implements OnInit {
   @Input() componentIsDelete: boolean;
   @Input() filter: Function;
   notes:[];
-
+  labels:any;
   constructor(private _service: NotesService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
 
     this._service.getRefreshedData().subscribe(()=>this.getNotes())
     this.getNotes()
+    this.getLabel()
    
   }
   private getNotes(){
@@ -32,6 +33,15 @@ export class GetnotesComponent implements OnInit {
         duration: 2000,
       })
     )
+}
+
+private getLabel(){
+  this._service.getLabels().subscribe(
+    response=>this.labels = response.data.details,
+    error=>this.snackBar.open('Error!', '', {
+      duration: 2000,
+    })
+  )
 }
 
 }

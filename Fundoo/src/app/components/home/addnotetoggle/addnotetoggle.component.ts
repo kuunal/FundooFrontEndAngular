@@ -62,6 +62,10 @@ export class AddnotetoggleComponent implements OnInit{
     console.log(this.isPined)
   }
 
+  getRemainder(remainder){
+    this.noteForm.get('reminder').setValue(remainder);
+  }
+
   submit(){
     this._service.addNote(this.noteForm.value).subscribe(
       response=>console.log("sadasd"),

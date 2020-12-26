@@ -18,7 +18,7 @@
           (mouseenter)="isTimeFocused = true"
           (mouseleave)="isTimeFocused = false"
         >
-          <mat-icon>alarm</mat-icon>
+          <mat-icon *ngIf="!remainderObject.isExpired">alarm</mat-icon>
           <span class="time">
             <span
               [style.text-decoration-line]="
@@ -64,7 +64,7 @@
         ></app-trash-component>
         <app-recover-component (click)="recover()"></app-recover-component>
       </ng-template>
-      <app-more-component [noteId]="note.id"></app-more-component>
+      <app-more-component [note]="note" [labels]="labels"></app-more-component>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -7,7 +7,7 @@
 mat-card {
   box-shadow: 1px 1px 5px 1px gainsboro !important;
   padding: 0;
-  width: 60vw;
+  width: 50vw;
   padding: 0.1em;
   border-radius: 8px;
   display: flex;

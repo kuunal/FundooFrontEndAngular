@@ -48,7 +48,7 @@ div:hover {
 
 .remainder {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   font-size: 12px;
   border: 1px solid black;
   align-items: center;
@@ -56,4 +56,5 @@ div:hover {
   background-color: rgba(0, 0, 0, 0.1);
   width: 80%;
   height: 30px;
+  padding: 0px 10px;
 }

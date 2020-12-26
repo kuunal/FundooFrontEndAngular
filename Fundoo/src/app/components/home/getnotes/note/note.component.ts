@@ -11,6 +11,7 @@ import { NotesService } from 'src/app/services/notes/notes.service';
 export class NoteComponent implements OnInit {
 
   @Input() note:any;
+  @Input() labels:any;
   isFocused: boolean = false;
   remainderObject:any;
   isTimeFocused: boolean;
@@ -37,7 +38,6 @@ export class NoteComponent implements OnInit {
   }
 
   changeColor(color){
-    console.log("sadsadsadassd")
     this._service.setColor({ noteIdList: [this.note.id] , color}).subscribe(
       success=>this.note.color = color ,
       error=> this.snackBar.open('Error changing color!', '', {

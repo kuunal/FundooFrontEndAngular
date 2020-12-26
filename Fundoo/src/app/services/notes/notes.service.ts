@@ -21,6 +21,7 @@ export class NotesService {
   removeRemainderUri: string= `${environment.backendUri}notes/removeReminderNotes`;
   getLabelUri: string= `${environment.backendUri}noteLabels/getNoteLabelList`;
   addLabelUri: string= `${environment.backendUri}noteLabels`;
+  labels:any;
 
   private _refresh$ = new Subject<void>();
 

@@ -8,6 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class RemainderIconComponent implements OnInit {
 
   date;
+  minDate=new Date()
   @Output() dateEvent = new EventEmitter();
   constructor() { }
 

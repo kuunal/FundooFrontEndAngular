@@ -42,14 +42,20 @@ export class LoginComponent implements OnInit {
     return this.myForm.get('password');
   }
 
+  redirectToSignUp(){
+    this.router.navigate(['/register'])
+  }
+
   submit():void{
-    this.service.login(this.myForm.value, `${this.backendUri}user/login`).subscribe(
+    console.log(this.myForm.value)
+
+    this.service.login({...this.myForm.value, cartId: "5fe63b25d5d3de001e5d8496"}).subscribe(
       response=>{
         localStorage.setItem('token', response.id);
         localStorage.setItem('data', response)
         this.router.navigate(['/home']);
       },
-      error=>this.snackBar.open('Error registering! Please try again later.', '', {
+      error=>this.snackBar.open(error, '', {
         duration: 2000,
       })
     );

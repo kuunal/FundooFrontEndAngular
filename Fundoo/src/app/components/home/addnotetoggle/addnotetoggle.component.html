@@ -38,7 +38,9 @@
     </mat-card-content>
     <mat-card-actions>
       <div class="actions__left">
-        <app-remainder-icon-component></app-remainder-icon-component>
+        <app-remainder-icon-component
+          (dateEvent)="getRemainder($event)"
+        ></app-remainder-icon-component>
         <app-add-collaborator-component></app-add-collaborator-component>
         <app-paint-component
           (colorChanged)="changeColor($event)"

@@ -8,7 +8,34 @@
 </button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="delete()">Delete</button>
-  <button mat-menu-item>
-    <app-add-label></app-add-label>
-  </button>
+  <button mat-menu-item [matMenuTriggerFor]="subMenu">Label</button>
+</mat-menu>
+
+<mat-menu #subMenu="matMenu" [hasBackdrop]="false">
+  <ng-template matMenuContent>
+    <form [formGroup]="labelForm">
+      <div mat-menu-item (click)="$event.stopPropagation()">
+        <input type="text" matInput formControlName="label" />
+        <mat-icon matSuffix>add</mat-icon>
+      </div>
+    </form>
+    <div class="labels" *ngFor="let labelItem of labels">
+      <div
+        class="label"
+        *ngIf="labelItem.label.includes(label); else createlabel"
+      >
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          [checked]="checkIfLabelExists(labelItem)"
+          (click)="addLabelToNote(labelItem)"
+        />
+        {{ labelItem.label }}
+      </div>
+    </div>
+    <ng-template #createlabel>
+      <button (click)="createLabel()">create</button>
+    </ng-template>
+  </ng-template>
 </mat-menu>

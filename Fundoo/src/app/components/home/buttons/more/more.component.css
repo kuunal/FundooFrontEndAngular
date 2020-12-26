@@ -1,0 +1,4 @@
+.menuForm {
+  display: flex;
+  flex-direction: column;
+}
