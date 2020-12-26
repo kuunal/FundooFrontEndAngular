@@ -13,7 +13,8 @@ export class MoreComponent implements OnInit {
 
   @Input() note;
   @Input() labels:any;
-  counter=0;
+  isFound: boolean = true;
+  foundCounter: number = 0;
   userId: string = localStorage.getItem("id")
   labelIsClicked: boolean= false
 
@@ -68,4 +69,24 @@ export class MoreComponent implements OnInit {
     alert(label.label)
   }
 
+  addLabel(){
+    this._service.addLabel({isDeleted: false,
+      label: this.label,
+      userId: this.userId}).subscribe(
+      response=>{},
+      error=>this.snackBar.open(error, '', {
+        duration: 2000,
+      })
+    );
+  }
+
+  checkLabelSearched(labelItem, index){
+    if(index === 0){
+      this.isFound = false;
+    }
+    if (labelItem.label.includes(this.label)){
+      this.isFound = true
+    }
+    return labelItem.label.includes(this.label);
+  }
 }

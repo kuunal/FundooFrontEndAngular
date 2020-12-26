@@ -18,6 +18,7 @@ export class GetnotesComponent implements OnInit {
   ngOnInit(): void {
 
     this._service.getRefreshedData().subscribe(()=>this.getNotes())
+    this._service.getRefreshedLabels().subscribe(()=>this.getLabel())
     this.getNotes()
     this.getLabel()
    

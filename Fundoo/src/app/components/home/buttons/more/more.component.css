@@ -1,4 +1,13 @@
 .menuForm {
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+
+input[type="text"] {
+  width: 100px;
+}
+
+.searchLabel {
+  display: inline-block;
 }

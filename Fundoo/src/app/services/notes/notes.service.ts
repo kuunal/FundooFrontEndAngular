@@ -24,10 +24,15 @@ export class NotesService {
   labels:any;
 
   private _refresh$ = new Subject<void>();
+  private _refreshLabels$ = new Subject<void>();
 
 
   getRefreshedData(){
     return this._refresh$;
+  }
+
+  getRefreshedLabels(){
+    return this._refreshLabels$;
   }
 
   constructor(private http:HttpServicesService) { }
@@ -113,6 +118,7 @@ export class NotesService {
   addLabel(data){
     return this.http.post(data, this.addLabelUri).pipe(
       tap(()=>{
+        this._refreshLabels$.next();
         this._refresh$.next();
       })
     );

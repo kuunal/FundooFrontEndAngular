@@ -13,29 +13,25 @@
 
 <mat-menu #subMenu="matMenu" [hasBackdrop]="false">
   <ng-template matMenuContent>
-    <form [formGroup]="labelForm">
-      <div mat-menu-item (click)="$event.stopPropagation()">
+    <form [formGroup]="labelForm" class="labelForm">
+      <div class="searchLabel" (click)="$event.stopPropagation()">
         <input type="text" matInput formControlName="label" />
-        <mat-icon matSuffix>add</mat-icon>
       </div>
     </form>
-    <div class="labels" *ngFor="let labelItem of labels">
-      <div
-        class="label"
-        *ngIf="labelItem.label.includes(label); else createlabel"
-      >
+    <div class="labels" *ngFor="let labelItem of labels; index as index">
+      <div class="label" *ngIf="checkLabelSearched(labelItem, index)">
         <input
           type="checkbox"
           name=""
           id=""
-          [checked]="checkIfLabelExists(labelItem)"
+          [checked]="checkIfLabelExists(labelItem, index)"
           (click)="addLabelToNote(labelItem)"
         />
         {{ labelItem.label }}
       </div>
     </div>
-    <ng-template #createlabel>
-      <button (click)="createLabel()">create</button>
-    </ng-template>
+    <button mat-icon-button *ngIf="!isFound" (click)="addLabel()">
+      <mat-icon> add </mat-icon>
+    </button>
   </ng-template>
 </mat-menu>
