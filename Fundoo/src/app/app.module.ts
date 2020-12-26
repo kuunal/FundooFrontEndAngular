@@ -40,6 +40,7 @@ import { RecoverComponent } from './components/home/buttons/recover/recover.comp
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RemainderComponent } from './components/home/remainder/remainder.component';
+import { AddNoteBodyComponent } from './components/home/add-note-body/add-note-body.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { RemainderComponent } from './components/home/remainder/remainder.compon
     TrashComponent,
     RecoverComponent,
     RemainderComponent,
+    AddNoteBodyComponent,
   ],
   imports: [
     BrowserModule,

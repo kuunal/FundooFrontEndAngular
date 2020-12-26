@@ -13,8 +13,6 @@ export class NoteComponent implements OnInit {
   @Input() note:any;
   @Input() labels:any;
   isFocused: boolean = false;
-  remainderObject:any;
-  isTimeFocused: boolean;
 
   constructor(private _service: NotesService
     ,private snackBar: MatSnackBar) { }
@@ -22,20 +20,7 @@ export class NoteComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  calculateRemainder(remainder){
-    let momentObject = moment(remainder);
-    let date = new Date();
-
-    if (momentObject.isAfter(moment(date))){
-      this.remainderObject = { isExpired: false, 
-                              remainingTime: momentObject.fromNow(),
-                              data: momentObject.format("MMM Do YY HH:MM:SS")};
-      }
-    else
-      this.remainderObject = { isExpired: true, 
-                              remainingTime: momentObject.fromNow(),
-                              data: momentObject.format("MMM Do YY HH:MM:SS")};
-  }
+  
 
   changeColor(color){
     this._service.setColor({ noteIdList: [this.note.id] , color}).subscribe(

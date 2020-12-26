@@ -10,37 +10,10 @@
       ></app-pin-component>
     </mat-card-title>
     <mat-card-content>
-      <span>{{ note.description }}</span>
-      <span *ngFor="let remainder of note.reminder">
-        {{ calculateRemainder(remainder) }}
-        <span
-          class="remainder"
-          (mouseenter)="isTimeFocused = true"
-          (mouseleave)="isTimeFocused = false"
-        >
-          <mat-icon *ngIf="!remainderObject.isExpired">alarm</mat-icon>
-          <span class="time">
-            <span
-              [style.text-decoration-line]="
-                remainderObject.isExpired ? 'line-through' : 'none'
-              "
-            >
-              {{
-                isTimeFocused
-                  ? remainderObject.remainingTime
-                  : remainderObject.data
-              }}
-            </span>
-          </span>
-          <button
-            mat-icon-button
-            *ngIf="isTimeFocused || remainderObject.isExpired"
-            (click)="removeRemainder()"
-          >
-            <mat-icon>close</mat-icon>
-          </button>
-        </span>
-      </span>
+      <app-add-note-body
+        [note]="note"
+        (removeRemainderEvent)="removeRemainder()"
+      ></app-add-note-body>
     </mat-card-content>
     <mat-card-actions [style.opacity]="!isFocused ? '0' : '1'">
       <ng-container *ngIf="!note.isDeleted; else deleteBlock">

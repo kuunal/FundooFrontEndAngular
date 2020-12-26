@@ -46,7 +46,9 @@
     </p>
     <a href="https://www.google.com/" target="_blank">Forgot Password?</a>
     <div class="last-row">
-      <button mat-flat-button>Create account</button>
+      <button mat-flat-button (click)="redirectToSignUp()">
+        Create account
+      </button>
       <button
         mat-flat-button
         color="primary"

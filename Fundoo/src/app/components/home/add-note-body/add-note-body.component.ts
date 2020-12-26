@@ -1,16 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-buttons',
-  templateUrl: './buttons.component.html',
-  styleUrls: ['./buttons.component.css']
+  selector: 'app-add-note-body',
+  templateUrl: './add-note-body.component.html',
+  styleUrls: ['./add-note-body.component.css']
 })
-export class ButtonsComponent implements OnInit {
-
+export class AddNoteBodyComponent implements OnInit {
   @Input() note;
-  remainderObject: { isExpired: boolean; remainingTime: string; data: string; };
+  remainderObject: any;
   isTimeFocused: boolean;
+  @Output() removeRemainderEvent = new EventEmitter();
   
   constructor() { }
 
@@ -32,4 +32,7 @@ export class ButtonsComponent implements OnInit {
                               data: momentObject.format("MMM Do YY HH:MM:SS")};
   }
 
+  removeRemainder(){
+    this.removeRemainderEvent.emit("");
+  }
 }
