@@ -1,1 +1,8 @@
-<p>labels works!</p>
+<div class="container" *ngFor="let label of labels">
+  <span (mouseenter)="isFocused = true" (mouseleave)="isFocused = false">
+    <span>{{ label }}</span>
+    <button *ngIf="isFocused" (click)="removeLabel()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </span>
+</div>

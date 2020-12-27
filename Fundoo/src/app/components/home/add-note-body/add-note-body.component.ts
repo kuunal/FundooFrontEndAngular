@@ -4,35 +4,38 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-add-note-body',
   templateUrl: './add-note-body.component.html',
-  styleUrls: ['./add-note-body.component.css']
+  styleUrls: ['./add-note-body.component.css'],
 })
 export class AddNoteBodyComponent implements OnInit {
+  @Input() note;
   @Input() remainders;
   remainderObject: any;
   isTimeFocused: boolean;
   @Output() removeRemainderEvent = new EventEmitter();
-  
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  constructor() {}
 
-  calculateRemainder(remainder){
+  ngOnInit(): void {}
+
+  calculateRemainder(remainder) {
     let momentObject = moment(remainder);
     let date = new Date();
 
-    if (momentObject.isAfter(moment(date))){
-      this.remainderObject = { isExpired: false, 
-                              remainingTime: momentObject.fromNow(),
-                              data: momentObject.format("MMM Do YY HH:MM:SS")};
-      }
-    else
-      this.remainderObject = { isExpired: true, 
-                              remainingTime: momentObject.fromNow(),
-                              data: momentObject.format("MMM Do YY HH:MM:SS")};
+    if (momentObject.isAfter(moment(date))) {
+      this.remainderObject = {
+        isExpired: false,
+        remainingTime: momentObject.fromNow(),
+        data: momentObject.format('MMM Do YY HH:MM:SS'),
+      };
+    } else
+      this.remainderObject = {
+        isExpired: true,
+        remainingTime: momentObject.fromNow(),
+        data: momentObject.format('MMM Do YY HH:MM:SS'),
+      };
   }
 
-  removeRemainder(){
-    this.removeRemainderEvent.emit("");
+  removeRemainder() {
+    this.removeRemainderEvent.emit('');
   }
 }

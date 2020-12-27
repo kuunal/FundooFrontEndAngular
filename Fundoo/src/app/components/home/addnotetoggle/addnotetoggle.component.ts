@@ -1,96 +1,144 @@
 import { EventEmitter } from '@angular/core';
-import { Component, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
   selector: 'app-addnotetoggle',
   templateUrl: './addnotetoggle.component.html',
-  styleUrls: ['./addnotetoggle.component.css']
+  styleUrls: ['./addnotetoggle.component.css'],
 })
-export class AddnotetoggleComponent implements OnInit{
-
+export class AddnotetoggleComponent implements OnInit {
   noteForm: FormGroup;
-  isFocused : boolean = false;
+  isFocused: boolean = false;
   isArchieved: boolean = false;
-  undo:string[];
-  color:string = "white";
+  undo: string[];
+  color: string = 'white';
+  labels: any;
+  @Output() closeEvent = new EventEmitter();
 
-  @Output() closeEvent = new EventEmitter(); 
   colorStyle = {
-    'background-color': "white"
-  }
+    'background-color': 'white',
+  };
 
-  constructor(private builder : FormBuilder
-    , private _service: NotesService
-    , private snackBar: MatSnackBar) { }
-  
+  constructor(
+    private builder: FormBuilder,
+    private _service: NotesService,
+    private snackBar: MatSnackBar
+  ) {}
+
   ngOnInit(): void {
-    
     this.noteForm = this.builder.group({
-      title:'',
-      description:'',
-      isPined:false,
+      title: '',
+      description: '',
+      isPined: false,
       color: '#FFFFFF',
       isArchived: false,
       labelIdList: [],
-      reminder: "",
-      collaberators: []
-    })
+      reminder: '',
+      collaberators: [],
+    });
+    this._service.getRefreshedLabels().subscribe(() => this.getLabel());
+    this.getLabel();
   }
 
-  undoAction(){
-    console.log(this.undo,"asdasdasas")
+  undoAction() {
+    console.log(this.undo, 'asdasdasas');
   }
 
-  get isPined(){
+  get isPined() {
     return this.noteForm.get('isPined').value;
   }
 
-  get title(){
+  get title() {
     return this.noteForm.get('title').value;
   }
 
-  get description(){
+  get description() {
     return this.noteForm.get('description').value;
   }
 
-  get reminder(){
+  get reminder() {
     return [this.noteForm.get('reminder').value];
   }
 
-  togglePin(){
-    this.noteForm.get('isPined').setValue(!this.isPined); 
-    console.log(this.isPined)
+  get labelIdList() {
+    return <FormArray>this.noteForm.get('labelIdList').value;
   }
 
-  getRemainder(remainder){
+  togglePin() {
+    this.noteForm.get('isPined').setValue(!this.isPined);
+    console.log(this.isPined);
+  }
+
+  getRemainder(remainder) {
     this.noteForm.get('reminder').setValue(remainder);
   }
 
-  submit(){
+  submit() {
     this._service.addNote(this.noteForm.value).subscribe(
-      response=>console.log("sadasd"),
-      error=>this.snackBar.open('Empty note cannot be saved', '', {
-        duration: 2000,
-      })
+      (response) => console.log('sadasd'),
+      (error) =>
+        this.snackBar.open('Empty note cannot be saved', '', {
+          duration: 2000,
+        })
     );
   }
 
-  toggleArchieve(){
+  toggleArchieve() {
     this.isArchieved = !this.isArchieved;
-    this.noteForm.get('isArchived').setValue(this.isArchieved); 
+    this.noteForm.get('isArchived').setValue(this.isArchieved);
   }
 
-  close(){
-    this.submit()
-    this.closeEvent.emit("");
+  close() {
+    this.submit();
+    this.closeEvent.emit('');
   }
 
-  changeColor(color){
-    this.noteForm.get('color').setValue(color); 
+  changeColor(color) {
+    this.noteForm.get('color').setValue(color);
     this.colorStyle['background-color'] = color;
-    console.log(this.color)
+    console.log(this.color);
+  }
+
+  private getLabel() {
+    this._service.getLabels().subscribe(
+      (response) => (this.labels = response.data.details),
+      (error) =>
+        this.snackBar.open('Error!', '', {
+          duration: 2000,
+        })
+    );
+  }
+
+  addLabelToNote(label) {
+    let labels = <FormArray>this.noteForm.get('labelIdList');
+    labels.push(label);
+    this.noteForm.get('labelIdList').setValue(label);
+  }
+
+  addLabel(label) {
+    this._service
+      .addLabel({
+        isDeleted: false,
+        label: label,
+        userId: localStorage.getItem('id'),
+      })
+      .subscribe(
+        (response) => {},
+        (error) =>
+          this.snackBar.open(error, '', {
+            duration: 2000,
+          })
+      );
   }
 }

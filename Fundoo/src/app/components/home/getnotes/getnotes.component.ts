@@ -34,15 +34,15 @@ export class GetnotesComponent implements OnInit {
         duration: 2000,
       })
     )
-}
+  }
 
-private getLabel(){
-  this._service.getLabels().subscribe(
-    response=>this.labels = response.data.details,
-    error=>this.snackBar.open('Error!', '', {
-      duration: 2000,
-    })
-  )
-}
+  private getLabel(){
+    this._service.getLabels().subscribe(
+      response=>this.labels = response.data.details,
+      error=>this.snackBar.open('Error!', '', {
+        duration: 2000,
+      })
+    )
+  }
 
 }

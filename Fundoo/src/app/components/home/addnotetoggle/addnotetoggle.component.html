@@ -36,6 +36,7 @@
         ([ngModel])="(description)"
       ></textarea>
       <app-add-note-body [remainders]="reminder"></app-add-note-body>
+      <app-labels [labels]="labelIdList"></app-labels>
     </mat-card-content>
     <mat-card-actions>
       <div class="actions__left">
@@ -51,7 +52,12 @@
           (click)="toggleArchieve()"
           [isArchived]="isArchieved"
         ></app-archieve-component>
-        <app-more-component></app-more-component>
+        <app-more-component
+          [labels]="labels"
+          [noteLabels]="labelIdList"
+          (addNoteToLabelEvent)="addLabelToNote($event)"
+          (addLabelEvent)="addLabel($event)"
+        ></app-more-component>
         <app-undo-component (click)="undoAction()"></app-undo-component>
         <app-redo-component></app-redo-component>
       </div>

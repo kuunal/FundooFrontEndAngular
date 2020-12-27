@@ -38,7 +38,13 @@
         ></app-trash-component>
         <app-recover-component (click)="recover()"></app-recover-component>
       </ng-template>
-      <app-more-component [note]="note" [labels]="labels"></app-more-component>
+      <app-more-component
+        [noteLabels]="note.noteLabels"
+        [labels]="labels"
+        (addNoteToLabelEvent)="addLabelToNote($event)"
+        (addLabelEvent)="addLabel($event)"
+        (deleteEvent)="delete()"
+      ></app-more-component>
     </mat-card-actions>
   </mat-card>
 </div>
