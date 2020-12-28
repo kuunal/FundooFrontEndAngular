@@ -48,6 +48,9 @@
 }
 
 .toolbar__mid {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   flex: 1;
   margin-left: 8%;
   height: 100%;

@@ -2,8 +2,9 @@
   font-size: 11px;
   border-radius: 25px;
   background-color: rgba(0, 0, 0, 0.05);
-  width: 60%;
   height: 24px;
+  display: inline-block;
+  position: relative;
   padding: 0px 10px;
 }
 
@@ -17,7 +18,17 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-  background: none;
+  /* background: none; */
+  /* background-color: rgba(0, 0, 0, 0.05); */
   padding: 0;
+  border-radius: 50%;
+  /* z-index: 99; */
   height: 50%;
+  right: 0;
+  position: absolute;
+}
+
+div > span {
+  display: flex;
+  align-items: center;
 }

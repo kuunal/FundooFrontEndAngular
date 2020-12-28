@@ -1,5 +1,8 @@
 <div (mouseenter)="isFocused = true" (mouseleave)="isFocused = false">
-  <mat-card [style.background-color]="note.color">
+  <mat-card
+    [ngStyle]="isGridView ? styles : { width: '225px ' }"
+    [style.background-color]="note.color"
+  >
     <mat-card-title>
       <span>
         {{ note.title }}
@@ -15,6 +18,10 @@
         [remainders]="note.reminder"
         (removeRemainderEvent)="removeRemainder()"
       ></app-add-note-body>
+      <app-labels
+        [labels]="labels.label"
+        [noteLabels]="note.noteLabels"
+      ></app-labels>
     </mat-card-content>
     <mat-card-actions [style.opacity]="!isFocused ? '0' : '1'">
       <ng-container *ngIf="!note.isDeleted; else deleteBlock">

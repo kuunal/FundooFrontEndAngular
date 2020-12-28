@@ -10,9 +10,12 @@ import { NotesService } from 'src/app/services/notes/notes.service';
 export class LabelsComponent implements OnInit {
   @Input() labels;
   isFocused: boolean;
+  @Input() noteLabels;
   @Output() labelRemoveEvent = new EventEmitter();
 
   constructor(private _service: NotesService, private snackBar: MatSnackBar) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.noteLabels);
+  }
 }

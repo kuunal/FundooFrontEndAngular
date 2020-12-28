@@ -9,7 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
-import { HomeNavbarComponent } from './components/home/home-navbar/home-navbar.component'
+import { HomeNavbarComponent } from './components/home/home-navbar/home-navbar.component';
 import { AuthGuard } from './auth.guard';
 import { SidnavComponent } from './components/home/sidnav/sidnav.component';
 import { MenuComponent } from './components/home/menu/menu.component';
@@ -37,11 +37,17 @@ import { ArchivedNotesComponent } from './components/home/archived-notes/archive
 import { DeleteComponent } from './components/home/delete/delete.component';
 import { TrashComponent } from './components/home/buttons/trash/trash.component';
 import { RecoverComponent } from './components/home/buttons/recover/recover.component';
-import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule,
+} from '@angular-material-components/datetime-picker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RemainderComponent } from './components/home/remainder/remainder.component';
 import { AddNoteBodyComponent } from './components/home/add-note-body/add-note-body.component';
 import { LabelsComponent } from './components/home/labels/labels.component';
+import { GridViewComponent } from './components/home/grid-view/grid-view.component';
+import { SharedDataServiceService } from './services/data/shared-data-service.service';
 
 @NgModule({
   declarations: [
@@ -78,6 +84,7 @@ import { LabelsComponent } from './components/home/labels/labels.component';
     RemainderComponent,
     AddNoteBodyComponent,
     LabelsComponent,
+    GridViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,16 +94,20 @@ import { LabelsComponent } from './components/home/labels/labels.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxMatDatetimePickerModule, 
+    NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
     MatDatepickerModule,
-    NgxMatNativeDateModule
+    NgxMatNativeDateModule,
   ],
-  providers: [AuthGuard, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorService,
-    multi:true
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+    SharedDataServiceService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

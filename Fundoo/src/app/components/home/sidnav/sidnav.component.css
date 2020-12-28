@@ -56,7 +56,7 @@ img {
   border-bottom-right-radius: 40px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .sidebar {
     width: 0;
   }

@@ -11,11 +11,19 @@ import { NotesService } from 'src/app/services/notes/notes.service';
 export class NoteComponent implements OnInit {
   @Input() note: any;
   @Input() labels: any;
+  @Input() isGridView: boolean;
   isFocused: boolean = false;
+
+  public styles: any;
 
   constructor(private _service: NotesService, private snackBar: MatSnackBar) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.styles = {
+      backgroundColor: this.note.color,
+      width: '70vw',
+    };
+  }
 
   addLabelToNote(label) {
     this._service.addLabelToNote({}, this.note.id, label).subscribe(

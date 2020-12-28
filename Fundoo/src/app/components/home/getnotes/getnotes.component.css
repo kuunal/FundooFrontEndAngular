@@ -14,7 +14,28 @@
 
 @media (max-width: 400px) {
   .container {
-    margin-left: 20px;
+    /* margin-left: 20px; */
+    width: 100%;
+  }
+}
+
+h1,
+h3 {
+  width: 100%;
+}
+
+.grid-container {
+  margin: 2% auto;
+  /* min-width: 100px; */
+  width: 85%;
+}
+
+.grid-container > * {
+  padding: 0.5em;
+}
+
+@media (max-width: 400px) {
+  .grid-container {
     width: 100%;
   }
 }
