@@ -48,6 +48,7 @@ import { AddNoteBodyComponent } from './components/home/add-note-body/add-note-b
 import { LabelsComponent } from './components/home/labels/labels.component';
 import { GridViewComponent } from './components/home/grid-view/grid-view.component';
 import { SharedDataServiceService } from './services/data/shared-data-service.service';
+import { LabelItemsComponent } from './components/home/label-items/label-items.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { SharedDataServiceService } from './services/data/shared-data-service.se
     AddNoteBodyComponent,
     LabelsComponent,
     GridViewComponent,
+    LabelItemsComponent,
   ],
   imports: [
     BrowserModule,

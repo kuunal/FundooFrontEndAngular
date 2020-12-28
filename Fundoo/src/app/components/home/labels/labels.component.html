@@ -1,9 +1,7 @@
 <br />
 <div class="label" *ngFor="let label of noteLabels">
-  <span (mouseenter)="isFocused = true" (mouseleave)="isFocused = false">
-    <span>{{ label.label }}</span>
-    <button *ngIf="isFocused" (click)="removeLabel()">
-      <mat-icon>close</mat-icon>
-    </button>
-  </span>
+  <app-label-items
+    [label]="label"
+    (labelRemoveEvent)="removeLabel($event)"
+  ></app-label-items>
 </div>

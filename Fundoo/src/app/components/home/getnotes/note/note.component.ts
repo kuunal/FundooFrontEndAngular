@@ -141,4 +141,14 @@ export class NoteComponent implements OnInit {
         })
     );
   }
+
+  removeLabel(label) {
+    this._service.removeLabelToNote({}, this.note.id, label.id).subscribe(
+      (response) => {},
+      (error) =>
+        this.snackBar.open('Error!', '', {
+          duration: 2000,
+        })
+    );
+  }
 }

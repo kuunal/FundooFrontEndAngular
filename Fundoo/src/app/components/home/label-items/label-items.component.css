@@ -1,0 +1,21 @@
+mat-icon {
+  height: 18px;
+  font-size: 14px;
+  padding: 0%;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  height: 50%;
+  right: 0;
+  position: absolute;
+}
+
+span {
+  display: flex;
+  align-items: center;
+}

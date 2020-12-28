@@ -21,6 +21,7 @@
       <app-labels
         [labels]="labels.label"
         [noteLabels]="note.noteLabels"
+        (labelRemoveEvent)="removeLabel($event)"
       ></app-labels>
     </mat-card-content>
     <mat-card-actions [style.opacity]="!isFocused ? '0' : '1'">

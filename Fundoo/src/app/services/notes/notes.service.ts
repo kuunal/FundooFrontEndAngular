@@ -5,136 +5,146 @@ import { HttpServicesService } from '../http-services.service';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NotesService {
-
-  addUri: string= environment.backendUri + 'notes/addNotes'
-  getUri: string= environment.backendUri + '/notes/getNotesList'
-  unPinUri: string= environment.backendUri + 'notes/pinUnpinNotes';
-  deleteUri: string= environment.backendUri + '/notes/trashNotes';
+  addUri: string = environment.backendUri + 'notes/addNotes';
+  getUri: string = environment.backendUri + '/notes/getNotesList';
+  unPinUri: string = environment.backendUri + 'notes/pinUnpinNotes';
+  deleteUri: string = environment.backendUri + '/notes/trashNotes';
   changeColorUri: string = `${environment.backendUri}notes/changesColorNotes`;
-  archiveUri: string= `${environment.backendUri}notes/archiveNotes`
-  updateDateUri: string= `${environment.backendUri}notes/addUpdateReminderNotes`;
-  deletePermanentlyUri: string= `${environment.backendUri}notes/deleteForeverNotes`;
-  restoreNoteUri: string= `${environment.backendUri}notes/trashNotes`;
-  removeRemainderUri: string= `${environment.backendUri}notes/removeReminderNotes`;
-  getLabelUri: string= `${environment.backendUri}noteLabels/getNoteLabelList`;
-  addLabelUri: string= `${environment.backendUri}noteLabels`;
-  labels:any;
+  archiveUri: string = `${environment.backendUri}notes/archiveNotes`;
+  updateDateUri: string = `${environment.backendUri}notes/addUpdateReminderNotes`;
+  deletePermanentlyUri: string = `${environment.backendUri}notes/deleteForeverNotes`;
+  restoreNoteUri: string = `${environment.backendUri}notes/trashNotes`;
+  removeRemainderUri: string = `${environment.backendUri}notes/removeReminderNotes`;
+  getLabelUri: string = `${environment.backendUri}noteLabels/getNoteLabelList`;
+  addLabelUri: string = `${environment.backendUri}noteLabels`;
+  labels: any;
 
   private _refresh$ = new Subject<void>();
   private _refreshLabels$ = new Subject<void>();
 
-  addLabelToNoteUri(noteId, labelId): string{
-    return `${environment.backendUri}notes/${noteId}/addLabelToNotes/${labelId}/add`; 
+  addLabelToNoteUri(noteId, labelId): string {
+    return `${environment.backendUri}notes/${noteId}/addLabelToNotes/${labelId}/add`;
   }
 
-  getRefreshedData(){
+  removeLabelToNoteUri(noteId, labelId): string {
+    return `${environment.backendUri}notes/${noteId}/addLabelToNotes/${labelId}/remove`;
+  }
+
+  getRefreshedData() {
     return this._refresh$;
   }
 
-  getRefreshedLabels(){
+  getRefreshedLabels() {
     return this._refreshLabels$;
   }
 
-  constructor(private http:HttpServicesService) { }
+  constructor(private http: HttpServicesService) {}
 
-  addNote(data): Observable<any>{
+  addNote(data): Observable<any> {
     return this.http.post(data, this.addUri).pipe(
-      tap(()=>{
+      tap(() => {
         this._refresh$.next();
       })
     );
   }
 
-
-  getNote(): Observable<any>{
+  getNote(): Observable<any> {
     return this.http.get(this.getUri);
   }
 
-  togglePin(data): Observable<any>{
-    return this.http.post(data ,this.unPinUri).pipe(
-      tap(()=>{
+  togglePin(data): Observable<any> {
+    return this.http.post(data, this.unPinUri).pipe(
+      tap(() => {
         this._refresh$.next();
       })
     );
   }
 
-  deleteNotes(data){
-    return this.http.post(data ,this.deleteUri).pipe(
-      tap(()=>{
+  deleteNotes(data) {
+    return this.http.post(data, this.deleteUri).pipe(
+      tap(() => {
         this._refresh$.next();
       })
     );
   }
 
   setColor(data) {
-    return this.http
-    .post(data,this.changeColorUri);
+    return this.http.post(data, this.changeColorUri);
   }
 
-  toggleArchive(data){
+  toggleArchive(data) {
     return this.http.post(data, this.archiveUri).pipe(
-      tap(()=>{
+      tap(() => {
         this._refresh$.next();
       })
-      );
+    );
   }
 
-  updateDate(date){
+  updateDate(date) {
     return this.http.post(date, this.updateDateUri).pipe(
-      tap(()=>{
+      tap(() => {
         this._refresh$.next();
       })
-      );
+    );
   }
 
-  deleteNotesPermanent(data){
+  deleteNotesPermanent(data) {
     return this.http.post(data, this.deletePermanentlyUri).pipe(
-      tap(()=>{
+      tap(() => {
         this._refresh$.next();
       })
-      );
+    );
   }
 
-  restoreNote(data){
+  restoreNote(data) {
     return this.http.post(data, this.restoreNoteUri).pipe(
-      tap(()=>{
+      tap(() => {
         this._refresh$.next();
       })
-      );
+    );
   }
 
-  removeRemainder(data){
+  removeRemainder(data) {
     return this.http.post(data, this.removeRemainderUri).pipe(
-      tap(()=>{
+      tap(() => {
         this._refresh$.next();
       })
-      );
+    );
   }
 
-  getLabels(): Observable<any>{
+  getLabels(): Observable<any> {
     return this.http.get(this.getLabelUri);
   }
 
-  addLabel(data){
+  addLabel(data) {
     return this.http.post(data, this.addLabelUri).pipe(
-      tap(()=>{
+      tap(() => {
         this._refreshLabels$.next();
         this._refresh$.next();
       })
     );
   }
 
-  addLabelToNote(data, noteId, labelId){
+  addLabelToNote(data, noteId, labelId) {
     return this.http.post(data, this.addLabelToNoteUri(noteId, labelId)).pipe(
-      tap(()=>{
+      tap(() => {
         this._refreshLabels$.next();
         this._refresh$.next();
       })
     );
   }
 
+  removeLabelToNote(data, noteId, labelId) {
+    return this.http
+      .post(data, this.removeLabelToNoteUri(noteId, labelId))
+      .pipe(
+        tap(() => {
+          this._refreshLabels$.next();
+          this._refresh$.next();
+        })
+      );
+  }
 }
-
