@@ -51,7 +51,7 @@ export class MoreComponent implements OnInit {
   }
 
   addLabelToNote(label) {
-    this.addNoteToLabelEvent.emit(label.id);
+    this.addNoteToLabelEvent.emit(label);
   }
 
   addLabel() {

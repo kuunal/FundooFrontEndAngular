@@ -26,7 +26,7 @@ export class NoteComponent implements OnInit {
   }
 
   addLabelToNote(label) {
-    this._service.addLabelToNote({}, this.note.id, label).subscribe(
+    this._service.addLabelToNote({}, this.note.id, label.id).subscribe(
       (response) => {},
       (error) =>
         this.snackBar.open('Error!', '', {

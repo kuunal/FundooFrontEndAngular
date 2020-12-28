@@ -1,3 +1,4 @@
+import { ArrayType } from '@angular/compiler';
 import { EventEmitter } from '@angular/core';
 import {
   Component,
@@ -24,6 +25,7 @@ export class AddnotetoggleComponent implements OnInit {
   undo: string[];
   color: string = 'white';
   labels: any;
+  labelsArray = [];
   @Output() closeEvent = new EventEmitter();
 
   colorStyle = {
@@ -121,9 +123,20 @@ export class AddnotetoggleComponent implements OnInit {
   }
 
   addLabelToNote(label) {
-    let labels = <FormArray>this.noteForm.get('labelIdList');
-    labels.push(label);
-    this.noteForm.get('labelIdList').setValue(label);
+    this.labelsArray.push(label);
+    this.noteForm
+      .get('labelIdList')
+      .setValue(this.labelsArray.map((label) => label.id));
+    console.log(this.labelsArray);
+  }
+
+  removeLabel(noteLabel) {
+    this.labelsArray = this.labelsArray.filter(
+      (label) => label.id !== noteLabel.id
+    );
+    this.noteForm
+      .get('labelIdList')
+      .setValue(this.labelsArray.map((label) => label.id));
   }
 
   addLabel(label) {

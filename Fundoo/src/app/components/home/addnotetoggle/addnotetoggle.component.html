@@ -36,7 +36,10 @@
         ([ngModel])="(description)"
       ></textarea>
       <app-add-note-body [remainders]="reminder"></app-add-note-body>
-      <app-labels [labels]="labelIdList"></app-labels>
+      <app-labels
+        [labels]="labelsArray"
+        (labelRemoveEvent)="removeLabel($event)"
+      ></app-labels>
     </mat-card-content>
     <mat-card-actions>
       <div class="actions__left">
