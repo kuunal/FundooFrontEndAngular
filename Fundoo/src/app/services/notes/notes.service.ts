@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpServicesService } from '../http-services.service';
 import { tap } from 'rxjs/operators';
+import { env } from 'process';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +34,10 @@ export class NotesService {
 
   removeLabelToNoteUri(noteId, labelId): string {
     return `${environment.backendUri}notes/${noteId}/addLabelToNotes/${labelId}/remove`;
+  }
+
+  addCollaboratorUri(noteId) {
+    return `${environment.backendUri}notes/${noteId}/AddcollaboratorsNotes`;
   }
 
   getRefreshedData() {
@@ -156,5 +161,11 @@ export class NotesService {
 
   getEmailForCollab(data) {
     return this.http.post(data, this.getUserEmailsUri);
+  }
+
+  addCollaborator(data, noteId) {
+    return this.http
+      .post(data, this.addCollaboratorUri(noteId))
+      .pipe(tap(() => this._refresh$.next()));
   }
 }

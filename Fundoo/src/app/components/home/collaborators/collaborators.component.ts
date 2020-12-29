@@ -16,6 +16,7 @@ import { NotesService } from 'src/app/services/notes/notes.service';
   styleUrls: ['./collaborators.component.css'],
 })
 export class CollaboratorsComponent implements OnInit {
+  note: any;
   collaborators: any;
   userData = JSON.parse(localStorage.getItem('data'));
   collaboratorsWithOwner: any;
@@ -33,7 +34,8 @@ export class CollaboratorsComponent implements OnInit {
     this.collaboratorForm = this._builder.group({
       collaboratorEmail: this._builder.array([this._builder.control('')]),
     });
-    this.collaborators = this._sharedservice.collaboratorList;
+    this.note = this._sharedservice.note;
+    this.collaborators = this.note.collaborators;
     this.collaboratorsWithOwner = [
       {
         email: this.userData.email,
@@ -43,6 +45,15 @@ export class CollaboratorsComponent implements OnInit {
       },
       ...this.collaborators,
     ];
+    this._sharedservice.getCollaboratorStatus().subscribe(
+      (response) => {
+        this.addCollaborator();
+      },
+      (error) =>
+        this.snackBar.open('Error!', '', {
+          duration: 2000,
+        })
+    );
   }
 
   get collaboratorEmail() {
@@ -59,20 +70,40 @@ export class CollaboratorsComponent implements OnInit {
       .value;
   }
 
-  getCollaborators() {
-    this._service
-      .getEmailForCollab({
-        searchWord: this.getLastInputValue(),
-      })
-      .subscribe(
-        (response) => {
-          this.availableCollaborators = response['data'].details;
-          console.log(this.availableCollaborators);
-        },
-        (error) =>
-          this.snackBar.open('Error!', '', {
-            duration: 2000,
-          })
-      );
+  getCollaborators(email) {
+    if (this.getLastInputValue())
+      this._service
+        .getEmailForCollab({
+          searchWord: email,
+        })
+        .subscribe(
+          (response) => {
+            this.availableCollaborators = response['data'].details;
+            console.log(this.availableCollaborators);
+          },
+          (error) =>
+            this.snackBar.open('Error!', '', {
+              duration: 2000,
+            })
+        );
+  }
+
+  addCollaborator() {
+    for (let email of this.collaboratorEmail.controls) {
+      this._service
+        .addCollaborator(
+          this.availableCollaborators.filter(
+            (collaborator) => collaborator.email === email.value
+          )[0],
+          this.note.id
+        )
+        .subscribe(
+          (response) => {},
+          (error) =>
+            this.snackBar.open('Error!', '', {
+              duration: 2000,
+            })
+        );
+    }
   }
 }

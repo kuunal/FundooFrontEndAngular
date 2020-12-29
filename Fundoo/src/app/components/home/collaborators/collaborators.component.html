@@ -13,6 +13,14 @@
       formArrayName="collaboratorEmail"
       *ngFor="let email of collaboratorEmail.controls; index as index"
     >
+      <button mat-icon-button class="add-btn">
+        <mat-icon>
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE4cHgiIHdpZHRoPSIxOHB4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0iIzAwMDAwMCI+CiA8cGF0aCBkPSJtMTAgOGMxLjY2IDAgMi45OS0xLjM0IDIuOTktM3MtMS4zMy0zLTIuOTktMy0zIDEuMzQtMyAzIDEuMzQgMyAzIDN6bS02IDJ2LTJoMnYtMmgtMnYtMmgtMnYyaC0ydjJoMnYyaDJ6bTYgMGMtMi4zMyAwLTcgMS4xNy03IDMuNXYyLjVoMTR2LTIuNWMwLTIuMzMtNC42Ny0zLjUtNy0zLjV6Ii8+CiA8cGF0aCBkPSJtMCAwaDE4djE4aC0xOHoiIGZpbGw9Im5vbmUiLz4KPC9zdmc+Cg=="
+            alt="add-collaborator"
+          />
+        </mat-icon>
+      </button>
       <mat-form-field>
         <input
           type="text"
@@ -20,13 +28,13 @@
           matInput
           [formControlName]="index"
           (keyup.enter)="addcollaboratorEmail()"
-          (keyup)="getCollaborators()"
+          (keyup)="getCollaborators(getLastInputValue())"
           [matAutocomplete]="auto"
         />
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
           <mat-option
             *ngFor="let option of availableCollaborators"
-            [value]="option"
+            [value]="option.email"
           >
             {{ option.email }}
           </mat-option>

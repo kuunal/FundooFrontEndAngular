@@ -34,10 +34,11 @@ export class NoteComponent implements OnInit {
   }
 
   openDialog() {
-    this._sharedservice.collaboratorList = this.note.collaborators;
+    this._sharedservice.note = this.note;
     const dialogRef = this.dialog.open(CollaboratorsComponent);
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
+      if (result === true) {
+        this._sharedservice.setCollaboratorStatus(true);
       }
     });
   }
