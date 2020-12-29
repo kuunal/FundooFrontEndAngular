@@ -35,9 +35,12 @@
         [ngStyle]="colorStyle"
         ([ngModel])="(description)"
       ></textarea>
-      <app-add-note-body [remainders]="reminder"></app-add-note-body>
+      <app-add-note-body
+        [remainders]="reminder"
+        (removeRemainderEvent)="removeRemainder()"
+      ></app-add-note-body>
       <app-labels
-        [labels]="labelsArray"
+        [noteLabels]="labelsArray"
         (labelRemoveEvent)="removeLabel($event)"
       ></app-labels>
     </mat-card-content>

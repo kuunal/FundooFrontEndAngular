@@ -139,19 +139,7 @@ export class AddnotetoggleComponent implements OnInit {
       .setValue(this.labelsArray.map((label) => label.id));
   }
 
-  addLabel(label) {
-    this._service
-      .addLabel({
-        isDeleted: false,
-        label: label,
-        userId: JSON.parse(localStorage.getItem('data')),
-      })
-      .subscribe(
-        (response) => {},
-        (error) =>
-          this.snackBar.open(error, '', {
-            duration: 2000,
-          })
-      );
+  removeRemainder() {
+    this.noteForm.get('reminder').setValue('');
   }
 }

@@ -1,6 +1,7 @@
 <div *ngFor="let remainder of remainders">
   {{ calculateRemainder(remainder) }}
   <span
+    *ngIf="checkValid(remainder)"
     class="remainder"
     (mouseenter)="isTimeFocused = true"
     (mouseleave)="isTimeFocused = false"
@@ -20,6 +21,7 @@
     <button
       *ngIf="isTimeFocused || remainderObject.isExpired"
       (click)="removeRemainder()"
+      type="button"
     >
       <mat-icon>close</mat-icon>
     </button>

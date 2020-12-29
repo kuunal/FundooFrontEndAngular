@@ -8,7 +8,6 @@ import { NotesService } from 'src/app/services/notes/notes.service';
   styleUrls: ['./labels.component.css'],
 })
 export class LabelsComponent implements OnInit {
-  @Input() labels;
   @Input() noteLabels;
   @Output() labelRemoveEvent = new EventEmitter();
 

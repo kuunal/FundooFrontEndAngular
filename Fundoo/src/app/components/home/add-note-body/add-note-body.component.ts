@@ -35,6 +35,10 @@ export class AddNoteBodyComponent implements OnInit {
       };
   }
 
+  checkValid(remainder) {
+    return moment(remainder).isValid();
+  }
+
   removeRemainder() {
     this.removeRemainderEvent.emit('');
   }
