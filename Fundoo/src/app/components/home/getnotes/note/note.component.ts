@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as moment from 'moment';
+import { SharedDataServiceService } from 'src/app/services/data/shared-data-service.service';
 import { NotesService } from 'src/app/services/notes/notes.service';
 import { CollaboratorsComponent } from '../../collaborators/collaborators.component';
 
@@ -20,8 +21,9 @@ export class NoteComponent implements OnInit {
 
   constructor(
     private _service: NotesService,
-    private snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog,
+    private _sharedservice: SharedDataServiceService
   ) {}
 
   ngOnInit(): void {
@@ -32,8 +34,8 @@ export class NoteComponent implements OnInit {
   }
 
   openDialog() {
+    this._sharedservice.collaboratorList = this.note.collaborators;
     const dialogRef = this.dialog.open(CollaboratorsComponent);
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
       }

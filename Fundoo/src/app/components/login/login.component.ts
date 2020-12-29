@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
       (response) => {
         localStorage.setItem('token', response.id);
         localStorage.setItem('data', JSON.stringify(response));
-        this.router.navigate(['/home']);
+        this.router.navigate(['/notes']);
       },
       (error) =>
         this.snackBar.open(error, '', {

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SharedDataServiceService {
   isGridView: boolean = false;
+  collaboratorList: [];
 
   constructor() {}
 }

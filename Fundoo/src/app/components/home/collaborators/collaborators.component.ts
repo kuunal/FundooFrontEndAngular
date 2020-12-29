@@ -1,6 +1,13 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SharedDataServiceService } from 'src/app/services/data/shared-data-service.service';
 import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
@@ -9,31 +16,33 @@ import { NotesService } from 'src/app/services/notes/notes.service';
   styleUrls: ['./collaborators.component.css'],
 })
 export class CollaboratorsComponent implements OnInit {
-  collaborators = [
-    {
-      name: 'f0rest',
-      isOwner: 'true',
-      email: 'f0rest@gmail.com',
-    },
-    {
-      name: 'Get_Right',
-      isOwner: 'true',
-      email: 'GetRight@gmail.com',
-    },
-  ];
+  collaborators: any;
+  userData = JSON.parse(localStorage.getItem('data'));
+  collaboratorsWithOwner: any;
   collaboratorForm: FormGroup;
   availableCollaborators: any;
 
   constructor(
     private _builder: FormBuilder,
     private _service: NotesService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private _sharedservice: SharedDataServiceService
   ) {}
 
   ngOnInit(): void {
     this.collaboratorForm = this._builder.group({
       collaboratorEmail: this._builder.array([this._builder.control('')]),
     });
+    this.collaborators = this._sharedservice.collaboratorList;
+    this.collaboratorsWithOwner = [
+      {
+        email: this.userData.email,
+        firstName: this.userData.firstName,
+        lastName: this.userData.lastName,
+        role: 'owner',
+      },
+      ...this.collaborators,
+    ];
   }
 
   get collaboratorEmail() {
