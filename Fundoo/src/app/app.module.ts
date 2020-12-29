@@ -49,6 +49,8 @@ import { LabelsComponent } from './components/home/labels/labels.component';
 import { GridViewComponent } from './components/home/grid-view/grid-view.component';
 import { SharedDataServiceService } from './services/data/shared-data-service.service';
 import { LabelItemsComponent } from './components/home/label-items/label-items.component';
+import { CollaboratorsComponent } from './components/home/collaborators/collaborators.component';
+import { CollaboratorComponent } from './components/home/collaborator/collaborator.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +89,8 @@ import { LabelItemsComponent } from './components/home/label-items/label-items.c
     LabelsComponent,
     GridViewComponent,
     LabelItemsComponent,
+    CollaboratorsComponent,
+    CollaboratorComponent,
   ],
   imports: [
     BrowserModule,

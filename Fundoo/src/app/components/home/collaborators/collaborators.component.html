@@ -1,0 +1,28 @@
+<form class="container" [formGroup]="collaboratorForm">
+  <h2 mat-dialog-title>Collaborators</h2>
+  <hr />
+  <mat-dialog-content>
+    <div class="content__body" *ngFor="let collaborator of collaborators">
+      <app-collaborator [collaborator]="collaborator"></app-collaborator>
+    </div>
+    <div
+      class="new-collaborator"
+      formArrayName="collaboratorEmail"
+      *ngFor="let email of collaboratorEmail.controls; index as index"
+    >
+      <mat-form-field appearance="outlined">
+        <input
+          matInput
+          type="text"
+          placeholder="person or email to share with"
+          [formControlName]="index"
+          (keyup.enter)="addcollaboratorEmail()"
+        />
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close mat-dialog-close="true">Save</button>
+    <button mat-button mat-dialog-close mat-dialog-close="false">Cancel</button>
+  </mat-dialog-actions>
+</form>

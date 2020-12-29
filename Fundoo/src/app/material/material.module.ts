@@ -13,6 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const material = [
   MatButtonModule,
@@ -29,6 +30,7 @@ const material = [
   MatCardModule,
   TextFieldModule,
   MatGridListModule,
+  MatDialogModule,
 ];
 
 @NgModule({
