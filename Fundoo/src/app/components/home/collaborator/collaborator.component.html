@@ -16,7 +16,7 @@
 
     <span>{{ collaborator.email }}</span>
   </div>
-  <div class="close">
+  <div class="close" *ngIf="!collaborator.hasOwnProperty('role')">
     <button mat-icon-button>
       <mat-icon> close </mat-icon>
     </button>

@@ -31,10 +31,14 @@
           (keyup)="getCollaborators(getLastInputValue())"
           [matAutocomplete]="auto"
         />
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-autocomplete
+          autoActiveFirstOption
+          #auto="matAutocomplete"
+          [displayWith]="getOptionText"
+        >
           <mat-option
             *ngFor="let option of availableCollaborators"
-            [value]="option.email"
+            [value]="option"
           >
             {{ option.email }}
           </mat-option>

@@ -56,6 +56,10 @@ export class CollaboratorsComponent implements OnInit {
     );
   }
 
+  getOptionText(option) {
+    return option.email;
+  }
+
   get collaboratorEmail() {
     return this.collaboratorForm.get('collaboratorEmail') as FormArray;
   }
@@ -90,20 +94,13 @@ export class CollaboratorsComponent implements OnInit {
 
   addCollaborator() {
     for (let email of this.collaboratorEmail.controls) {
-      this._service
-        .addCollaborator(
-          this.availableCollaborators.filter(
-            (collaborator) => collaborator.email === email.value
-          )[0],
-          this.note.id
-        )
-        .subscribe(
-          (response) => {},
-          (error) =>
-            this.snackBar.open('Error!', '', {
-              duration: 2000,
-            })
-        );
+      this._service.addCollaborator({ ...email.value }, this.note.id).subscribe(
+        (response) => {},
+        (error) =>
+          this.snackBar.open('Error!', '', {
+            duration: 2000,
+          })
+      );
     }
   }
 }
