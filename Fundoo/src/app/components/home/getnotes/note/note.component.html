@@ -29,7 +29,9 @@
         <app-remainder-icon-component
           (dateEvent)="changeDate($event)"
         ></app-remainder-icon-component>
-        <app-add-collaborator-component></app-add-collaborator-component>
+        <app-add-collaborator-component
+          (click)="openDialog()"
+        ></app-add-collaborator-component>
         <app-paint-component
           (colorChanged)="changeColor($event)"
         ></app-paint-component>

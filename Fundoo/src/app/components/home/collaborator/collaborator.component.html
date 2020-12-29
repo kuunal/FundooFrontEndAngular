@@ -1,6 +1,9 @@
 <div class="container">
   <div class="container__image">
-    <mat-icon>account_circle</mat-icon>
+    <button>
+      {{ collaborator.name | slice: 0:1 }}
+      {{ collaborator.lastName | slice: 0:1 }}
+    </button>
   </div>
   <div class="container__body">
     <span>{{ collaborator.name }}</span>

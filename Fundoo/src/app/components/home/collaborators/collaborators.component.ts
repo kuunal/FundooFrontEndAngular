@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotesService } from 'src/app/services/notes/notes.service';
 
 @Component({
   selector: 'app-collaborators',
@@ -20,12 +22,17 @@ export class CollaboratorsComponent implements OnInit {
     },
   ];
   collaboratorForm: FormGroup;
+  availableCollaborators: any;
 
-  constructor(private builder: FormBuilder) {}
+  constructor(
+    private _builder: FormBuilder,
+    private _service: NotesService,
+    public snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
-    this.collaboratorForm = this.builder.group({
-      collaboratorEmail: this.builder.array([this.builder.control('')]),
+    this.collaboratorForm = this._builder.group({
+      collaboratorEmail: this._builder.array([this._builder.control('')]),
     });
   }
 
@@ -34,14 +41,29 @@ export class CollaboratorsComponent implements OnInit {
   }
 
   addcollaboratorEmail() {
-    console.log(
-      this.collaboratorEmail.controls[
-        this.collaboratorEmail.controls.length - 1
-      ].value
-    );
-    if (
-      this.collaboratorEmail.controls[this.collaboratorEmail.length - 1].value
-    )
-      this.collaboratorEmail.push(this.builder.control(''));
+    if (this.getLastInputValue())
+      this.collaboratorEmail.push(this._builder.control(''));
+  }
+
+  getLastInputValue() {
+    return this.collaboratorEmail.controls[this.collaboratorEmail.length - 1]
+      .value;
+  }
+
+  getCollaborators() {
+    this._service
+      .getEmailForCollab({
+        searchWord: this.getLastInputValue(),
+      })
+      .subscribe(
+        (response) => {
+          this.availableCollaborators = response['data'].details;
+          console.log(this.availableCollaborators);
+        },
+        (error) =>
+          this.snackBar.open('Error!', '', {
+            duration: 2000,
+          })
+      );
   }
 }

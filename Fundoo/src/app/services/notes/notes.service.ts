@@ -20,10 +20,12 @@ export class NotesService {
   removeRemainderUri: string = `${environment.backendUri}notes/removeReminderNotes`;
   getLabelUri: string = `${environment.backendUri}noteLabels/getNoteLabelList`;
   addLabelUri: string = `${environment.backendUri}noteLabels`;
+  getUserEmailsUri: string = `${environment.backendUri}user/searchUserList`;
   labels: any;
 
   private _refresh$ = new Subject<void>();
   private _refreshLabels$ = new Subject<void>();
+  private _refreshCollaboratorEmail$ = new Subject<void>();
 
   addLabelToNoteUri(noteId, labelId): string {
     return `${environment.backendUri}notes/${noteId}/addLabelToNotes/${labelId}/add`;
@@ -39,6 +41,10 @@ export class NotesService {
 
   getRefreshedLabels() {
     return this._refreshLabels$;
+  }
+
+  getRefreshedCollaborators() {
+    return this._refreshCollaboratorEmail$;
   }
 
   constructor(private http: HttpServicesService) {}
@@ -146,5 +152,9 @@ export class NotesService {
           this._refresh$.next();
         })
       );
+  }
+
+  getEmailForCollab(data) {
+    return this.http.post(data, this.getUserEmailsUri);
   }
 }

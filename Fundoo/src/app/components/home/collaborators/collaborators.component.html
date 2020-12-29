@@ -10,14 +10,24 @@
       formArrayName="collaboratorEmail"
       *ngFor="let email of collaboratorEmail.controls; index as index"
     >
-      <mat-form-field appearance="outlined">
+      <mat-form-field>
         <input
-          matInput
           type="text"
           placeholder="person or email to share with"
+          matInput
           [formControlName]="index"
           (keyup.enter)="addcollaboratorEmail()"
+          (keyup)="getCollaborators()"
+          [matAutocomplete]="auto"
         />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of availableCollaborators"
+            [value]="option"
+          >
+            {{ option.email }}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
     </div>
   </mat-dialog-content>

@@ -8,57 +8,71 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
-  backendUri:string = environment.backendUri;
-  hide:boolean = true;
+  backendUri: string = environment.backendUri;
+  hide: boolean = true;
   myForm: FormGroup;
 
-  constructor(private builder : FormBuilder
-    , private service:LoginserviceService
-    , private router: Router
-    , private snackBar: MatSnackBar) { }
+  constructor(
+    private builder: FormBuilder,
+    private service: LoginserviceService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.myForm = this.builder.group({
-      email: ['',[
-        Validators.required,
-        Validators.pattern("^[a-zA-Z0-9]+[\\.\\-\\+\\_]?[a-zA-Z0-9]+@[a-zA-Z0-9]+[.]?[a-zA-Z]{2,4}[\\.]?([a-z]{2,4})?$")
-      ]],
-      password: ['',[
-        Validators.required,
-        Validators.pattern("^(?=.*[0-9])(?=.*[A-Z])(?=[a-zA-Z0-9]*[^a-zA-Z0-9][a-zA-Z0-9]*$).{8,}")
-      ]]
-    })
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            '^[a-zA-Z0-9]+[\\.\\-\\+\\_]?[a-zA-Z0-9]+@[a-zA-Z0-9]+[.]?[a-zA-Z]{2,4}[\\.]?([a-z]{2,4})?$'
+          ),
+        ],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            '^(?=.*[0-9])(?=.*[A-Z])(?=[a-zA-Z0-9]*[^a-zA-Z0-9][a-zA-Z0-9]*$).{8,}'
+          ),
+        ],
+      ],
+    });
   }
 
-  get email(){
+  get email() {
     return this.myForm.get('email');
   }
 
-  get password(){
+  get password() {
     return this.myForm.get('password');
   }
 
-  redirectToSignUp(){
-    this.router.navigate(['/register'])
+  redirectToSignUp() {
+    this.router.navigate(['/register']);
   }
 
-  submit():void{
-    console.log(this.myForm.value)
+  submit(): void {
+    console.log(this.myForm.value);
 
-    this.service.login({...this.myForm.value, cartId: "5fe63b25d5d3de001e5d8496"}).subscribe(
-      response=>{
+    let data = { ...this.myForm.value, cartId: '' };
+    console.log(data);
+
+    this.service.login({ ...data }).subscribe(
+      (response) => {
         localStorage.setItem('token', response.id);
-        localStorage.setItem('data', response)
+        localStorage.setItem('data', JSON.stringify(response));
         this.router.navigate(['/home']);
       },
-      error=>this.snackBar.open(error, '', {
-        duration: 2000,
-      })
+      (error) =>
+        this.snackBar.open(error, '', {
+          duration: 2000,
+        })
     );
   }
-
 }

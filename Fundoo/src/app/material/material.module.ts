@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 const material = [
   MatButtonModule,
@@ -31,6 +32,7 @@ const material = [
   TextFieldModule,
   MatGridListModule,
   MatDialogModule,
+  MatAutocompleteModule,
 ];
 
 @NgModule({

@@ -144,7 +144,7 @@ export class AddnotetoggleComponent implements OnInit {
       .addLabel({
         isDeleted: false,
         label: label,
-        userId: localStorage.getItem('id'),
+        userId: JSON.parse(localStorage.getItem('data')),
       })
       .subscribe(
         (response) => {},

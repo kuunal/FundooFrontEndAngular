@@ -1,7 +1,9 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as moment from 'moment';
 import { NotesService } from 'src/app/services/notes/notes.service';
+import { CollaboratorsComponent } from '../../collaborators/collaborators.component';
 
 @Component({
   selector: 'app-note',
@@ -16,13 +18,26 @@ export class NoteComponent implements OnInit {
 
   public styles: any;
 
-  constructor(private _service: NotesService, private snackBar: MatSnackBar) {}
+  constructor(
+    private _service: NotesService,
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.styles = {
       backgroundColor: this.note.color,
       width: '70vw',
     };
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(CollaboratorsComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+      }
+    });
   }
 
   addLabelToNote(label) {

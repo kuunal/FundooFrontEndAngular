@@ -25,7 +25,6 @@ export class GetnotesComponent implements OnInit {
     this._service.getRefreshedLabels().subscribe(() => this.getLabel());
     this.getNotes();
     this.getLabel();
-    console.log(this.labels);
   }
 
   get isGridView() {

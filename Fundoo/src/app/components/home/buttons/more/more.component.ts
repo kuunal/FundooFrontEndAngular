@@ -18,7 +18,7 @@ export class MoreComponent implements OnInit {
   @Output() addLabelEvent = new EventEmitter();
   isFound: boolean = true;
   foundCounter: number = 0;
-  userId: string = localStorage.getItem('id');
+  userId: string = JSON.parse(localStorage.getItem('data'));
   labelIsClicked: boolean = false;
   @Output() deleteEvent = new EventEmitter();
 

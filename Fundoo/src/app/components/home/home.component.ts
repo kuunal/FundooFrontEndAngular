@@ -20,11 +20,7 @@ export class HomeComponent implements OnInit {
   @Input() isSidebarClicked: boolean;
   @Input() isMenuClicked: boolean;
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    public dialog: MatDialog
-  ) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
 
@@ -40,14 +36,5 @@ export class HomeComponent implements OnInit {
       default:
         this.router.navigate([route], { relativeTo: this.route });
     }
-  }
-
-  openDialog() {
-    const dialogRef = this.dialog.open(CollaboratorsComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-      }
-    });
   }
 }
