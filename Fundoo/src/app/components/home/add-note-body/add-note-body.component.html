@@ -27,16 +27,15 @@
     </button>
   </span>
 </div>
-<div class="collaborator" *ngIf="note">
-  <ng-template *ngFor="let collaborator of note">
-    <div class="container__image">
-      <button mat-icon-button color="primary">
-        {{
-          (collaborator.firstName | slice: 0:1 | uppercase) +
-            "" +
-            (collaborator.lastName | slice: 0:1 | uppercase)
-        }}
-      </button>
-    </div>
-  </ng-template>
+
+<div class="collaborator" *ngFor="let collaborator of note">
+  <div class="container__image">
+    <button mat-icon-button class="collaborator-btn">
+      {{
+        (collaborator.firstName | slice: 0:1 | uppercase) +
+          "" +
+          (collaborator.lastName | slice: 0:1 | uppercase)
+      }}
+    </button>
+  </div>
 </div>
