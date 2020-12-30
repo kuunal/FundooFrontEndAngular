@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { from } from 'rxjs';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
@@ -9,7 +9,13 @@ import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 })
 export class CollaboratorComponent implements OnInit {
   @Input() collaborator;
+  @Output() removeCollaboratorEvent = new EventEmitter();
 
   constructor() {}
   ngOnInit() {}
+
+  removeCollaborator(userId) {
+    alert('sadasd');
+    this.removeCollaboratorEvent.emit(userId);
+  }
 }

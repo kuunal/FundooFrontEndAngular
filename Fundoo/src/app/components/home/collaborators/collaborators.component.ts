@@ -6,6 +6,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SharedDataServiceService } from 'src/app/services/data/shared-data-service.service';
 import { NotesService } from 'src/app/services/notes/notes.service';
@@ -27,7 +28,8 @@ export class CollaboratorsComponent implements OnInit {
     private _builder: FormBuilder,
     private _service: NotesService,
     public snackBar: MatSnackBar,
-    private _sharedservice: SharedDataServiceService
+    private _sharedservice: SharedDataServiceService,
+    public dialogRef: MatDialogRef<CollaboratorsComponent>
   ) {}
 
   ngOnInit(): void {
@@ -93,14 +95,30 @@ export class CollaboratorsComponent implements OnInit {
   }
 
   addCollaborator() {
-    for (let email of this.collaboratorEmail.controls) {
-      this._service.addCollaborator({ ...email.value }, this.note.id).subscribe(
-        (response) => {},
-        (error) =>
-          this.snackBar.open('Error!', '', {
-            duration: 2000,
-          })
-      );
+    if (this.note) {
+      for (let user of this.collaboratorEmail.controls) {
+        this._service
+          .addCollaborator({ ...user.value }, this.note.id)
+          .subscribe(
+            (response) => {},
+            (error) =>
+              this.snackBar.open('Error!', '', {
+                duration: 2000,
+              })
+          );
+      }
     }
+  }
+  save() {}
+  cancel() {}
+
+  removeCollaborator(userId) {
+    this._service.removeCollaborator(this.note.id, userId).subscribe(
+      (response) => {},
+      (error) =>
+        this.snackBar.open('Error!', '', {
+          duration: 2000,
+        })
+    );
   }
 }

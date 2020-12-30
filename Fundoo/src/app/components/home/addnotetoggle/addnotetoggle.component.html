@@ -62,7 +62,6 @@
           [labels]="labels"
           [noteLabels]="labelIdList"
           (addNoteToLabelEvent)="addLabelToNote($event)"
-          (addLabelEvent)="addLabel($event)"
         ></app-more-component>
         <app-undo-component (click)="undoAction()"></app-undo-component>
         <app-redo-component></app-redo-component>

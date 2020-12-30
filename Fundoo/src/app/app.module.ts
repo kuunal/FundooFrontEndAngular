@@ -51,6 +51,7 @@ import { SharedDataServiceService } from './services/data/shared-data-service.se
 import { LabelItemsComponent } from './components/home/label-items/label-items.component';
 import { CollaboratorsComponent } from './components/home/collaborators/collaborators.component';
 import { CollaboratorComponent } from './components/home/collaborator/collaborator.component';
+import { SearchComponent } from './components/home/search/search.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { CollaboratorComponent } from './components/home/collaborator/collaborat
     LabelItemsComponent,
     CollaboratorsComponent,
     CollaboratorComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

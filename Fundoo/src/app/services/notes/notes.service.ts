@@ -40,6 +40,10 @@ export class NotesService {
     return `${environment.backendUri}notes/${noteId}/AddcollaboratorsNotes`;
   }
 
+  removeCollaboratorUri(noteId, userId) {
+    return `${environment.backendUri}notes/${noteId}/removeCollaboratorsNotes/${userId}`;
+  }
+
   getRefreshedData() {
     return this._refresh$;
   }
@@ -166,6 +170,12 @@ export class NotesService {
   addCollaborator(data, noteId) {
     return this.http
       .post(data, this.addCollaboratorUri(noteId))
+      .pipe(tap(() => this._refresh$.next()));
+  }
+
+  removeCollaborator(noteId, userId) {
+    return this.http
+      .delete(this.removeCollaboratorUri(noteId, userId))
       .pipe(tap(() => this._refresh$.next()));
   }
 }

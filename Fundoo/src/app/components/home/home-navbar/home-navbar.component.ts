@@ -13,6 +13,7 @@ export class HomeNavbarComponent implements OnInit {
   searchForm: FormGroup;
   isFocus: boolean = false;
   isMenuClicked: boolean = false;
+  searchInput: string;
   @Output() public sidebarClickedEvent = new EventEmitter();
   @Output() public menuClickedEvent = new EventEmitter();
   isSidebarClicked: boolean = false;
@@ -49,5 +50,13 @@ export class HomeNavbarComponent implements OnInit {
 
   gridViewClicked() {
     this._dataService.isGridView = !this._dataService.isGridView;
+  }
+
+  searchNotes() {
+    this._dataService.searchKeyword(this.searchInput);
+  }
+
+  navigateToSearch() {
+    this.router.navigate(['/search']);
   }
 }

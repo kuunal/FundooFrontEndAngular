@@ -8,6 +8,7 @@ import { GridViewComponent } from './components/home/grid-view/grid-view.compone
 import { HomeComponent } from './components/home/home.component';
 import { NotesComponent } from './components/home/notes/notes.component';
 import { RemainderComponent } from './components/home/remainder/remainder.component';
+import { SearchComponent } from './components/home/search/search.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'archive', component: ArchivedNotesComponent },
       { path: 'delete', component: DeleteComponent },
       { path: 'remainder', component: RemainderComponent },
+      { path: 'search', component: SearchComponent },
     ],
   },
 ];
