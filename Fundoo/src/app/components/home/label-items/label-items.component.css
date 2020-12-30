@@ -9,6 +9,7 @@ button {
   outline: none;
   cursor: pointer;
   padding: 0;
+  background-color: transparent;
   border-radius: 50%;
   height: 50%;
   right: 0;
