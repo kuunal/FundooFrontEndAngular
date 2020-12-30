@@ -99,16 +99,13 @@
   background-color: gainsboro !important;
 }
 .container {
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 350px;
-  height: 370px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
-  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 5%;
-  right: 5%;
   background-color: white;
   z-index: 99;
 }

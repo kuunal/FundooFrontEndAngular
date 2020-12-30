@@ -5,7 +5,6 @@
       class="example-icon"
       aria-label="Example icon-button with menu icon"
       (click)="sidebarClicked()"
-      (blur)="sidebarClicked()"
     >
       <mat-icon>menu</mat-icon>
     </button>
@@ -51,35 +50,37 @@
       <mat-icon class="menu-icon">account_circle</mat-icon>
     </button>
   </div>
-  <mat-menu #menu="matMenu" class="container">
+  <mat-menu #menu="matMenu" [hasBackdrop]="false">
     <ng-template matMenuContent>
-      <div class="container__image">
-        <a mat-fab>
-          <mat-icon class="menu-icon">account_circle</mat-icon>
-        </a>
-      </div>
-      <div class="container__info">
-        <span>{{ name }}</span>
-        <p>{{ email }}</p>
-      </div>
-      <div class="container__manage">
-        <button mat-stroked-button>Manage your Fundoo Account</button>
-      </div>
-      <div class="container__anoter-account">
-        <button mat-flat-button>
-          <img
-            src="https://cdn0.iconfinder.com/data/icons/essential-02/50/AddPerson-512.png"
-            alt="add"
-          />
-          Add another account
-        </button>
-        <div class="container__sign-out">
-          <button mat-stroked-button (click)="logout()">Sign out</button>
+      <div class="container">
+        <div class="container__image">
+          <a mat-fab>
+            <mat-icon class="menu-icon">account_circle</mat-icon>
+          </a>
         </div>
-        <div class="footer">
-          <a mat-flat-button> Privacy Policy </a>
-          <a>.</a>
-          <a mat-flat-button>Terms of Service</a>
+        <div class="container__info">
+          <span>{{ name }}</span>
+          <p>{{ email }}</p>
+        </div>
+        <div class="container__manage">
+          <button mat-stroked-button>Manage your Fundoo Account</button>
+        </div>
+        <div class="container__anoter-account">
+          <button mat-flat-button>
+            <img
+              src="https://cdn0.iconfinder.com/data/icons/essential-02/50/AddPerson-512.png"
+              alt="add"
+            />
+            Add another account
+          </button>
+          <div class="container__sign-out">
+            <button mat-stroked-button (click)="logout()">Sign out</button>
+          </div>
+          <div class="footer">
+            <a mat-flat-button> Privacy Policy </a>
+            <a>.</a>
+            <a mat-flat-button>Terms of Service</a>
+          </div>
         </div>
       </div>
     </ng-template>

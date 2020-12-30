@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   changeRoute(route) {
-    console.log(route);
     switch (route) {
       case 'archive':
         this.router.navigate([route], { relativeTo: this.route });

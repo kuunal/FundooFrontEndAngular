@@ -17,6 +17,8 @@ export class HomeNavbarComponent implements OnInit {
   @Output() public sidebarClickedEvent = new EventEmitter();
   @Output() public menuClickedEvent = new EventEmitter();
   isSidebarClicked: boolean = false;
+  name: string = JSON.parse(localStorage.getItem('data')).name;
+  email: string = JSON.parse(localStorage.getItem('data')).email;
 
   constructor(
     private builder: FormBuilder,
@@ -32,6 +34,11 @@ export class HomeNavbarComponent implements OnInit {
 
   sidebarClicked() {
     this.isSidebarClicked = !this.isSidebarClicked;
+    this.sidebarClickedEvent.emit(this.isSidebarClicked);
+  }
+
+  sidebarClose() {
+    this.isSidebarClicked = false;
     this.sidebarClickedEvent.emit(this.isSidebarClicked);
   }
 
@@ -58,5 +65,9 @@ export class HomeNavbarComponent implements OnInit {
 
   navigateToSearch() {
     this.router.navigate(['/search']);
+  }
+
+  logout() {
+    localStorage.clear();
   }
 }
