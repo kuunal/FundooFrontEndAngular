@@ -10,7 +10,7 @@ import { NotesService } from 'src/app/services/notes/notes.service';
 })
 export class GetnotesComponent implements OnInit {
   @Input() componentIsDelete: boolean;
-  @Input() filter: Function;
+  @Input() filter;
   unpinned: any;
   notes: [];
   searchValue: string = '';
@@ -51,11 +51,15 @@ export class GetnotesComponent implements OnInit {
     this._service.getNote().subscribe(
       (response) => {
         this.notes = response.data.data
-          .filter(this.filter(this.searchValue))
+          .filter(
+            this.filter.type ? this.filter.func(this.searchValue) : this.filter
+          )
           .filter((note) => note.isPined)
           .reverse();
         this.unpinned = response.data.data
-          .filter(this.filter(this.searchValue))
+          .filter(
+            this.filter.type ? this.filter.func(this.searchValue) : this.filter
+          )
           .filter((note) => !note.isPined)
           .reverse();
       },

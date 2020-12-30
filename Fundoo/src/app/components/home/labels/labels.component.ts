@@ -13,9 +13,7 @@ export class LabelsComponent implements OnInit {
 
   constructor(private _service: NotesService, private snackBar: MatSnackBar) {}
 
-  ngOnInit(): void {
-    console.log(this.noteLabels);
-  }
+  ngOnInit(): void {}
 
   removeLabel(label) {
     this.labelRemoveEvent.emit(label);

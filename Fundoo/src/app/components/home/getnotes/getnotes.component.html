@@ -22,7 +22,7 @@
 
 <ng-template #gridView>
   <mat-grid-list class="grid-container" cols="2" rowHeight="200px">
-    <h3>Pinned</h3>
+    <h3 *ngIf="notes.length">Pinned</h3>
     <mat-grid-tile colspan="breakpoint" *ngFor="let note of notes">
       <app-note
         [note]="note"
@@ -35,7 +35,7 @@
 
 <ng-template #gridUnpinnedView>
   <mat-grid-list class="grid-container" cols="1" rowHeight="200px">
-    <h3>Unpinned</h3>
+    <h3 *ngIf="notes.length">Unpinned</h3>
     <mat-grid-tile colspan="1" *ngFor="let note of unpinned">
       <app-note
         [note]="note"
