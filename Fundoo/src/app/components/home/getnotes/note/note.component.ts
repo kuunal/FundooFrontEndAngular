@@ -38,7 +38,7 @@ export class NoteComponent implements OnInit {
     const dialogRef = this.dialog.open(CollaboratorsComponent);
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
-      if (result) {
+      if (result === 'true') {
         this._sharedservice.setCollaboratorStatus(true);
       }
     });

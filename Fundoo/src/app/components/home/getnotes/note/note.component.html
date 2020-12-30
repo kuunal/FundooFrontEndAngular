@@ -15,6 +15,7 @@
     <mat-card-content>
       <span>{{ note.description }}</span>
       <app-add-note-body
+        [note]="note.collaborators"
         [remainders]="note.reminder"
         (removeRemainderEvent)="removeRemainder()"
       ></app-add-note-body>
