@@ -32,6 +32,11 @@ mat-card-actions {
   justify-content: flex-start;
 }
 
+mat-card-actions div {
+  box-shadow: none;
+  display: flex;
+}
+
 /deep/ .mat-card-actions > {
   width: 24px;
   height: 24px;

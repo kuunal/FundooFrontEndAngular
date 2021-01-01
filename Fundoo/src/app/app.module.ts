@@ -52,6 +52,7 @@ import { LabelItemsComponent } from './components/home/label-items/label-items.c
 import { CollaboratorsComponent } from './components/home/collaborators/collaborators.component';
 import { CollaboratorComponent } from './components/home/collaborator/collaborator.component';
 import { SearchComponent } from './components/home/search/search.component';
+import { UpdateComponentComponent } from './components/home/update-component/update-component.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { SearchComponent } from './components/home/search/search.component';
     CollaboratorsComponent,
     CollaboratorComponent,
     SearchComponent,
+    UpdateComponentComponent,
   ],
   imports: [
     BrowserModule,

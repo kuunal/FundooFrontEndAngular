@@ -1,10 +1,14 @@
-<div (mouseenter)="isFocused = true" (mouseleave)="isFocused = false">
+<div
+  (mouseenter)="isFocused = true"
+  (mouseleave)="isFocused = false"
+  [ngStyle]="isDialog ? { width: '70vw' } : ''"
+>
   <mat-card
-    [ngStyle]="isGridView ? styles : { width: '225px ' }"
+    [ngStyle]="isDialog ? { width: '70vw !important' } : ''"
     [style.background-color]="note.color"
   >
-    <mat-card-title>
-      <span>
+    <mat-card-title *ngIf="!isDialog; else dialogTemplate">
+      <span (click)="updateDialog()">
         {{ note.title }}
       </span>
       <app-pin-component
@@ -12,8 +16,23 @@
         [isPined]="note.isPined"
       ></app-pin-component>
     </mat-card-title>
+    <ng-template #dialogTemplate>
+      <mat-card-title>
+        <input type="text" matInput [(ngModel)]="noteTitle" />
+        <app-pin-component
+          (click)="togglePin()"
+          [isPined]="note.isPined"
+        ></app-pin-component>
+      </mat-card-title>
+    </ng-template>
+
     <mat-card-content>
-      <span>{{ note.description }}</span>
+      <span *ngIf="!isDialog; else dialogInput" (click)="updateDialog()">{{
+        note.description
+      }}</span>
+      <ng-template #dialogInput>
+        <input type="text" matInput [(ngModel)]="noteDescription" />
+      </ng-template>
       <app-add-note-body
         [note]="note.collaborators"
         [remainders]="note.reminder"
@@ -24,8 +43,11 @@
         (labelRemoveEvent)="removeLabel($event)"
       ></app-labels>
     </mat-card-content>
-    <mat-card-actions [style.opacity]="!isFocused ? '0' : '1'">
-      <ng-container *ngIf="!note.isDeleted; else deleteBlock">
+    <mat-card-actions
+      [style.opacity]="!isFocused ? '0' : '1'"
+      [ngStyle]="isDialog ? matActionStyle : ''"
+    >
+      <div *ngIf="!note.isDeleted; else deleteBlock">
         <app-remainder-icon-component
           (dateEvent)="changeDate($event)"
         ></app-remainder-icon-component>
@@ -41,20 +63,26 @@
           [isArchived]="note.isArchived"
         >
         </app-archieve-component>
-      </ng-container>
+        <app-more-component
+          [noteLabels]="note.noteLabels"
+          [labels]="labels"
+          (addNoteToLabelEvent)="addLabelToNote($event)"
+          (addLabelEvent)="addLabel($event)"
+          (deleteEvent)="delete()"
+        ></app-more-component>
+      </div>
+      <div *ngIf="isDialog">
+        <app-close-component
+          mat-dialog-close
+          (click)="close()"
+        ></app-close-component>
+      </div>
       <ng-template #deleteBlock>
         <app-trash-component
           (click)="deletePermanently()"
         ></app-trash-component>
         <app-recover-component (click)="recover()"></app-recover-component>
       </ng-template>
-      <app-more-component
-        [noteLabels]="note.noteLabels"
-        [labels]="labels"
-        (addNoteToLabelEvent)="addLabelToNote($event)"
-        (addLabelEvent)="addLabel($event)"
-        (deleteEvent)="delete()"
-      ></app-more-component>
     </mat-card-actions>
   </mat-card>
 </div>

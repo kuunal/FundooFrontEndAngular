@@ -1,0 +1,8 @@
+app-note {
+  width: 80vw;
+}
+
+/deep/ .mat-dialog-container {
+  padding: 0;
+  border-radius: 10px;
+}

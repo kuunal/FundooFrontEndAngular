@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { SharedDataServiceService } from 'src/app/services/data/shared-data-service.service';
 import { NotesService } from 'src/app/services/notes/notes.service';
 import { CollaboratorsComponent } from '../../collaborators/collaborators.component';
+import { UpdateComponentComponent } from '../../update-component/update-component.component';
 
 @Component({
   selector: 'app-note',
@@ -15,8 +16,16 @@ export class NoteComponent implements OnInit {
   @Input() note: any;
   @Input() labels: any;
   @Input() isGridView: boolean;
+  @Input() isDialog: boolean;
   isFocused: boolean = false;
+  noteTitle: string;
+  noteDescription: string;
 
+  matActionStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  };
   public styles: any;
 
   constructor(
@@ -31,6 +40,15 @@ export class NoteComponent implements OnInit {
       backgroundColor: this.note.color,
       width: '70vw',
     };
+
+    this.noteTitle = this.note.title;
+    this.noteDescription = this.note.description;
+  }
+
+  updateDialog() {
+    const dialogRef = this.dialog.open(UpdateComponentComponent, {
+      data: this.note,
+    });
   }
 
   openDialog() {
@@ -169,5 +187,21 @@ export class NoteComponent implements OnInit {
           duration: 2000,
         })
     );
+  }
+
+  close() {
+    this._service
+      .updateNote({
+        noteId: this.note.id,
+        description: this.noteDescription,
+        title: this.noteTitle,
+      })
+      .subscribe(
+        (response) => {},
+        (error) =>
+          this.snackBar.open('Error!', '', {
+            duration: 2000,
+          })
+      );
   }
 }

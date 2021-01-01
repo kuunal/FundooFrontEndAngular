@@ -23,6 +23,7 @@ export class NotesService {
   addLabelUri: string = `${environment.backendUri}noteLabels`;
   getUserEmailsUri: string = `${environment.backendUri}user/searchUserList`;
   labels: any;
+  updateNoteUri: string = `${environment.backendUri}notes/updateNotes`;
 
   private _refresh$ = new Subject<void>();
   private _refreshLabels$ = new Subject<void>();
@@ -60,6 +61,14 @@ export class NotesService {
 
   addNote(data): Observable<any> {
     return this.http.post(data, this.addUri).pipe(
+      tap(() => {
+        this._refresh$.next();
+      })
+    );
+  }
+
+  updateNote(data): Observable<any> {
+    return this.http.post(data, this.updateNoteUri).pipe(
       tap(() => {
         this._refresh$.next();
       })
