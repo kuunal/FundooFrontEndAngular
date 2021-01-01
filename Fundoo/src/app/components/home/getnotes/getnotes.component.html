@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!isGridView; else gridView">
+<div class="container">
   <h3>Pinned</h3>
   <span *ngFor="let note of notes">
     <app-note
@@ -9,7 +9,7 @@
   </span>
 </div>
 
-<div class="container" *ngIf="!isGridView; else gridUnpinnedView">
+<div class="container">
   <h3>Unpinned</h3>
   <div *ngFor="let note of unpinned">
     <app-note
@@ -19,29 +19,3 @@
     ></app-note>
   </div>
 </div>
-
-<ng-template #gridView>
-  <mat-grid-list class="grid-container" cols="2" rowHeight="200px">
-    <h3 *ngIf="notes.length">Pinned</h3>
-    <mat-grid-tile colspan="breakpoint" *ngFor="let note of notes">
-      <app-note
-        [note]="note"
-        [labels]="labels"
-        [isGridView]="isGridView"
-      ></app-note>
-    </mat-grid-tile>
-  </mat-grid-list>
-</ng-template>
-
-<ng-template #gridUnpinnedView>
-  <mat-grid-list class="grid-container" cols="1" rowHeight="200px">
-    <h3 *ngIf="notes.length">Unpinned</h3>
-    <mat-grid-tile colspan="1" *ngFor="let note of unpinned">
-      <app-note
-        [note]="note"
-        [labels]="labels"
-        [isGridView]="isGridView"
-      ></app-note>
-    </mat-grid-tile>
-  </mat-grid-list>
-</ng-template>

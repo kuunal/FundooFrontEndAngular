@@ -1,10 +1,10 @@
 <div
   (mouseenter)="isFocused = true"
   (mouseleave)="isFocused = false"
-  [ngStyle]="isDialog ? { width: '70vw' } : ''"
+  [ngStyle]="isDialog || isGridView ? { width: '70vw' } : ''"
 >
   <mat-card
-    [ngStyle]="isDialog ? { width: '70vw !important' } : ''"
+    [ngStyle]="isDialog || isGridView ? { width: '70vw !important' } : ''"
     [style.background-color]="note.color"
   >
     <mat-card-title *ngIf="!isDialog; else dialogTemplate">
