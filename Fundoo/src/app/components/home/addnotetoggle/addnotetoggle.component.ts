@@ -10,8 +10,11 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SharedDataServiceService } from 'src/app/services/data/shared-data-service.service';
 import { NotesService } from 'src/app/services/notes/notes.service';
+import { CollaboratorsComponent } from '../collaborators/collaborators.component';
 
 @Component({
   selector: 'app-addnotetoggle',
@@ -26,16 +29,19 @@ export class AddnotetoggleComponent implements OnInit {
   color: string = 'white';
   labels: any;
   labelsArray = [];
-  @Output() closeEvent = new EventEmitter();
+  collaboratorsArray = [];
 
   colorStyle = {
     'background-color': 'white',
   };
+  @Output() closeEvent = new EventEmitter();
 
   constructor(
     private builder: FormBuilder,
     private _service: NotesService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private _sharedservice: SharedDataServiceService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -51,6 +57,10 @@ export class AddnotetoggleComponent implements OnInit {
     });
     this._service.getRefreshedLabels().subscribe(() => this.getLabel());
     this.getLabel();
+
+    this._sharedservice
+      .getCollaborator()
+      .subscribe((response) => this.collaboratorsArray.push(response));
   }
 
   undoAction() {
@@ -141,5 +151,19 @@ export class AddnotetoggleComponent implements OnInit {
 
   removeRemainder() {
     this.noteForm.get('reminder').setValue('');
+  }
+
+  openDialog() {
+    let note = {
+      collaborators: this.collaboratorsArray,
+    };
+    this._sharedservice.note = note;
+    const dialogRef = this.dialog.open(CollaboratorsComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      if (result === 'true') {
+        this._sharedservice.setCollaboratorStatus(true);
+      }
+    });
   }
 }

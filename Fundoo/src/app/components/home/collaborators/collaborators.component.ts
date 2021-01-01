@@ -1,8 +1,10 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
@@ -23,6 +25,7 @@ export class CollaboratorsComponent implements OnInit {
   collaboratorsWithOwner: any;
   collaboratorForm: FormGroup;
   availableCollaborators: any;
+  @Output() addCollaboratorEvent = new EventEmitter();
 
   constructor(
     private _builder: FormBuilder,
@@ -38,6 +41,7 @@ export class CollaboratorsComponent implements OnInit {
     });
     this.note = this._sharedservice.note;
     this.collaborators = this.note.collaborators;
+    console.log(this.collaborators, this.note);
     this.collaboratorsWithOwner = [
       {
         email: this.userData.email,
@@ -45,7 +49,7 @@ export class CollaboratorsComponent implements OnInit {
         lastName: this.userData.lastName,
         role: 'owner',
       },
-      ...this.collaborators,
+      ...((this.collaborators && this.collaborators) || {}),
     ];
     this._sharedservice.getCollaboratorStatus().subscribe(
       (response) => {
@@ -95,7 +99,7 @@ export class CollaboratorsComponent implements OnInit {
   }
 
   addCollaborator() {
-    if (this.note) {
+    if (this.note.id) {
       for (let user of this.collaboratorEmail.controls) {
         this._service
           .addCollaborator({ ...user.value }, this.note.id)
@@ -107,10 +111,12 @@ export class CollaboratorsComponent implements OnInit {
               })
           );
       }
+    } else {
+      for (let user of this.collaboratorEmail.controls) {
+        this._sharedservice.setaddCollaborator(user.value);
+      }
     }
   }
-  save() {}
-  cancel() {}
 
   removeCollaborator(userId) {
     this._service.removeCollaborator(this.note.id, userId).subscribe(

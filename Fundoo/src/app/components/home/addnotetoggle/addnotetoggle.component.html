@@ -36,6 +36,7 @@
         ([ngModel])="(description)"
       ></textarea>
       <app-add-note-body
+        [note]="collaboratorsArray"
         [remainders]="reminder"
         (removeRemainderEvent)="removeRemainder()"
       ></app-add-note-body>
@@ -49,7 +50,9 @@
         <app-remainder-icon-component
           (dateEvent)="getRemainder($event)"
         ></app-remainder-icon-component>
-        <app-add-collaborator-component></app-add-collaborator-component>
+        <app-add-collaborator-component
+          (click)="openDialog()"
+        ></app-add-collaborator-component>
         <app-paint-component
           (colorChanged)="changeColor($event)"
         ></app-paint-component>

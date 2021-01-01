@@ -20,7 +20,7 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'notes', component: NotesComponent },
+      { path: '', component: NotesComponent },
       { path: 'archive', component: ArchivedNotesComponent },
       { path: 'delete', component: DeleteComponent },
       { path: 'remainder', component: RemainderComponent },

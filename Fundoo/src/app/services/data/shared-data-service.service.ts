@@ -6,9 +6,10 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 export class SharedDataServiceService {
   isGridView: boolean = false;
-  note: [];
+  note: any;
   private newCollaboratorsEvent$ = new Subject<boolean>();
   private searchEvent$ = new BehaviorSubject<string>('');
+  private addCollaboratorsEvent$ = new Subject<boolean>();
 
   constructor() {}
 
@@ -26,5 +27,13 @@ export class SharedDataServiceService {
 
   getCollaboratorStatus() {
     return this.newCollaboratorsEvent$.asObservable();
+  }
+
+  setaddCollaborator(collaborator) {
+    this.addCollaboratorsEvent$.next(collaborator);
+  }
+
+  getCollaborator() {
+    return this.addCollaboratorsEvent$.asObservable();
   }
 }
