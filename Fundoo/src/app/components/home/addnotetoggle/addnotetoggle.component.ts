@@ -67,13 +67,15 @@ export class AddnotetoggleComponent implements OnInit {
             .setValue([...this.collaboratorsArray]);
           break;
         case 'remove':
-          console.log(this.collaboratorsArray, response);
           this.collaboratorsArray = this.collaboratorsArray.filter(
             (collaberator) => collaberator.userId != response.userId
           );
           this.noteForm
             .get('collaberators')
             .setValue([...this.collaboratorsArray]);
+          break;
+        default: {
+        }
       }
     });
   }
