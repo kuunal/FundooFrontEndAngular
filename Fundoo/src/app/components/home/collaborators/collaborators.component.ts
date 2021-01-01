@@ -116,17 +116,27 @@ export class CollaboratorsComponent implements OnInit {
       for (let user of this.collaboratorEmail.controls) {
         collaboratorsArray.push(user.value);
       }
-      this._sharedservice.setaddCollaborator(collaboratorsArray);
+      this._sharedservice.setaddCollaborator({
+        type: 'add',
+        collaborators: collaboratorsArray,
+      });
     }
   }
 
   removeCollaborator(userId) {
-    this._service.removeCollaborator(this.note.id, userId).subscribe(
-      (response) => {},
-      (error) =>
-        this.snackBar.open('Error!', '', {
-          duration: 2000,
-        })
-    );
+    if (this.note.id) {
+      this._service.removeCollaborator(this.note.id, userId).subscribe(
+        (response) => {},
+        (error) =>
+          this.snackBar.open('Error!', '', {
+            duration: 2000,
+          })
+      );
+    } else {
+      this._sharedservice.setaddCollaborator({
+        type: 'remove',
+        userId: userId,
+      });
+    }
   }
 }

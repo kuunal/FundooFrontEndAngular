@@ -59,8 +59,22 @@ export class AddnotetoggleComponent implements OnInit {
     this.getLabel();
 
     this._sharedservice.getCollaborator().subscribe((response) => {
-      this.collaboratorsArray.push(...response);
-      this.noteForm.get('collaberators').setValue([...this.collaboratorsArray]);
+      switch (response.type) {
+        case 'add':
+          this.collaboratorsArray.push(...response.collaborators);
+          this.noteForm
+            .get('collaberators')
+            .setValue([...this.collaboratorsArray]);
+          break;
+        case 'remove':
+          console.log(this.collaboratorsArray, response);
+          this.collaboratorsArray = this.collaboratorsArray.filter(
+            (collaberator) => collaberator.userId != response.userId
+          );
+          this.noteForm
+            .get('collaberators')
+            .setValue([...this.collaboratorsArray]);
+      }
     });
   }
 
