@@ -47,7 +47,7 @@ export class NoteComponent implements OnInit {
 
   updateDialog() {
     const dialogRef = this.dialog.open(UpdateComponentComponent, {
-      data: this.note,
+      data: { note: this.note, labels: this.labels },
     });
   }
 

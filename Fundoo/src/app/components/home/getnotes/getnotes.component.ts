@@ -22,7 +22,6 @@ export class GetnotesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.searchValue);
     this.setSearchval();
     this._service.getRefreshedData().subscribe(() => this.getNotes());
     this._service.getRefreshedLabels().subscribe(() => this.getLabel());
@@ -48,6 +47,7 @@ export class GetnotesComponent implements OnInit {
   }
 
   private getNotes() {
+    console.log('Get called');
     this._service.getNote().subscribe(
       (response) => {
         this.notes = response.data.data

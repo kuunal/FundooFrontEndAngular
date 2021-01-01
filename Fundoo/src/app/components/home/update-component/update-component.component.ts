@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NoteComponent } from '../getnotes/note/note.component';
 
 @Component({
   selector: 'app-update-component',
@@ -7,9 +8,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./update-component.component.css'],
 })
 export class UpdateComponentComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public note: any) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<NoteComponent>
+  ) {}
 
-  ngOnInit(): void {
-    console.log(this.note);
-  }
+  ngOnInit(): void {}
 }
