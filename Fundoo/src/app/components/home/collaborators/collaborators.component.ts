@@ -112,9 +112,11 @@ export class CollaboratorsComponent implements OnInit {
           );
       }
     } else {
+      let collaboratorsArray = [];
       for (let user of this.collaboratorEmail.controls) {
-        this._sharedservice.setaddCollaborator(user.value);
+        collaboratorsArray.push(user.value);
       }
+      this._sharedservice.setaddCollaborator(collaboratorsArray);
     }
   }
 

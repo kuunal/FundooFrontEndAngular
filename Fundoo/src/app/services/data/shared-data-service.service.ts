@@ -9,7 +9,7 @@ export class SharedDataServiceService {
   note: any;
   private newCollaboratorsEvent$ = new Subject<boolean>();
   private searchEvent$ = new BehaviorSubject<string>('');
-  private addCollaboratorsEvent$ = new Subject<boolean>();
+  private addCollaboratorsEvent$ = new Subject<any>();
 
   constructor() {}
 

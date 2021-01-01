@@ -58,9 +58,10 @@ export class AddnotetoggleComponent implements OnInit {
     this._service.getRefreshedLabels().subscribe(() => this.getLabel());
     this.getLabel();
 
-    this._sharedservice
-      .getCollaborator()
-      .subscribe((response) => this.collaboratorsArray.push(response));
+    this._sharedservice.getCollaborator().subscribe((response) => {
+      this.collaboratorsArray.push(...response);
+      this.noteForm.get('collaberators').setValue([...this.collaboratorsArray]);
+    });
   }
 
   undoAction() {
@@ -85,6 +86,10 @@ export class AddnotetoggleComponent implements OnInit {
 
   get labelIdList() {
     return <FormArray>this.noteForm.get('labelIdList').value;
+  }
+
+  set collaberators(data) {
+    this.noteForm.get('collaberators').setValue([...data]);
   }
 
   togglePin() {
